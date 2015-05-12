@@ -1,0 +1,266 @@
+package com.example.testpic;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.util.EntityUtils;
+import org.apache.james.mime4j.util.CharsetUtil;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends Activity implements OnClickListener{
+  private byte[] mContent;
+  //图片的格式
+  public static final String JPEG_MIME_TYPE = "image/jpeg";
+  public static final String UIMG = "file";//修改用户信息的上传用户头像参数名
+  private Bitmap bmFromCamera;
+  private ImageView ivUserIcon;
+  private Button upLoad;
+
+  /**
+   * 应用程序sdcard数据
+   */
+  public static final String SDCARD_ROOT = android.os.Environment.getExternalStorageDirectory().getPath();
+
+  public static final String SDCARD_USER_IMAGE_PATH = SDCARD_ROOT + "/myImage/";
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    ivUserIcon=(ImageView) findViewById(R.id.imageView1);
+    upLoad=(Button) findViewById(R.id.button3);
+    ivUserIcon.setOnClickListener(this);
+  }
+
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    ContentResolver resolver = getContentResolver();
+    /**
+     * 如果不拍照 或者不选择图片返回 不执行任何操作
+     */
+
+    if (data != null) {
+      /**
+       * 因为两种方式都用到了startActivityForResult方法，这个方法执行完后都会执行onActivityResult方法
+       * ， 所以为了区别到底选择了那个方式获取图片要进行判断
+       * ，这里的requestCode跟startActivityForResult里面第二个参数对应 1== 相册     0 ==相机
+       */
+      if (requestCode == 1) {
+
+        try {
+          // 获得图片的uri
+          Uri originalUri = data.getData();
+          // 将图片内容解析成字节数组
+          mContent = readStream(resolver.openInputStream(Uri
+            .parse(originalUri.toString())));
+          // 将字节数组转换为ImageView可调用的Bitmap对象
+          bmFromCamera = getPicFromBytes(mContent, null);
+
+          // //把得到的图片绑定在控件上显示
+          ivUserIcon.setImageBitmap(bmFromCamera);
+          //       //先保存到sdcard上为临时头像图片
+          BitmapUtils.saveBitmapToSDcardTempFile(bmFromCamera);
+        } catch (Exception e) {
+          System.out.println(e.getMessage());
+        }
+
+      } else if (requestCode == 0) {
+
+        String sdStatus = Environment.getExternalStorageState();
+        if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
+          return;
+        }
+        Bundle bundle = data.getExtras();
+        bmFromCamera = (Bitmap) bundle.get("data");// 获取相机返回的数据，并转换为Bitmap图片格式
+        ivUserIcon.setImageBitmap(bmFromCamera);
+
+        BitmapUtils.saveBitmapToSDcardTempFile(bmFromCamera);
+      }
+
+      //       User.uheadUrl = MyApplication.SDCARD_USER_IMAGE_PATH_AND_NAME;
+      //       isChangedHeadImg = true;//说明用户选择了另外的头像图片
+    }
+  }
+
+
+
+
+  public static byte[] readStream(InputStream inStream) throws Exception {
+    byte[] buffer = new byte[1024];
+    int len = -1;
+    ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+    while ((len = inStream.read(buffer)) != -1) {
+      outStream.write(buffer, 0, len);
+    }
+    byte[] data = outStream.toByteArray();
+    outStream.close();
+    inStream.close();
+    return data;
+
+  }
+  public static Bitmap getPicFromBytes(byte[] bytes,
+                                       BitmapFactory.Options opts) {
+    if (bytes != null)
+      if (opts != null)
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length,
+          opts);
+      else
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    return null;
+  }
+
+
+  /**
+   * 用户填写详细信息
+   * @param user
+   */
+  //public static void infoSave(final User user){
+  /*  try {
+        MultipartEntity reqEntity = new MultipartEntity();
+        reqEntity.addPart(token, new StringBody(Const.TOKEN));
+        reqEntity.addPart(userid, new StringBody(user.uid));
+        reqEntity.addPart(uname, new StringBody(user.nickName, CharsetUtil.getCharset("UTF-8")));
+        reqEntity.addPart(uheigh, new StringBody(user.height+""));
+        reqEntity.addPart(uweight, new StringBody(user.weight+""));
+        reqEntity.addPart(usex, new StringBody(user.sex));
+        reqEntity.addPart(ubirthday, new StringBody(user.birthday));
+
+   * 如果是从相册或相机获取的图片，会保存到sd卡中，并且uheadUrl为图片在sd卡中的位置，
+   * 那么传给服务器二进制文件。如果用户没有设置图片，则传该用户的默认图片。
+
+
+        //不管用户改不改变头像，都要向服务器提交保存在sd卡里的头像文件
+
+        //先向服务器提交sd卡中的从相册或者相机取的图片
+        FileBody imgBody = null;
+        if(bmFromCamera != null){
+            imgBody = new FileBody(new File(User.SDCARD_USER_IMAGE_PATH + "/tempHeadImg.jpg"), User.JPEG_MIME_TYPE);
+        }else{
+            imgBody = new FileBody(new File(User.headImgPath), User.JPEG_MIME_TYPE);
+        }
+        reqEntity.addPart(User.UIMG, imgBody);
+
+        //执行请求,获得响应实体
+        HttpEntity entity = HttpUtils.getEntity(Const.CUPTIME_URL+Const.USER_INFO_API, reqEntity);
+        String contentString = EntityUtils.toString(entity, "UTF-8");
+
+        Log.i("info","设置修改完返回：" + contentString);
+
+        JSONObject responseObject = new JSONObject(contentString);
+   *//******如果返回的jsonObject中code=1，则设置成功，保存数据到本地数据库
+   *     如果返回的jsonObject中有err_code，则提示用户，并且停止执行后续代码******//*
+        if(responseObject.has("err_code")){
+            //设置失败，提示用户失败原因
+            String errResponse = responseObject.get("msg").toString();
+            System.out.println(responseObject.toString());
+            //Toast.makeText(instance, errResponse, Toast.LENGTH_LONG).show();;//发布的进度信息
+            //设置失败，不保存数据库，而是从数据库取原先的数据
+            UserInfoDao userInfoDao = new UserInfoDao();
+            userInfoDao.getDefaultUser();
+            return;
+        }else if(responseObject.has("code")){
+            System.out.println(responseObject.toString());
+            //设置成功
+            UserInfoDao userInfoDao = new UserInfoDao();
+            userInfoDao.saveUserInfo();
+            //把相册或者相机的图片保存为以用户uid命名的图片
+            //当点击   “保存，开始使用”   时，再保存到SD卡里
+            if(bmFromCamera != null){
+                BitmapUtils.saveBitmapToSDcard(bmFromCamera,user.uid);
+            }
+            //保存后，把sdcard里的tempHeadImg图片文件删除
+            File fileDir = new File(User.SDCARD_USER_IMAGE_PATH);
+            if(!fileDir.exists()){
+                fileDir.mkdirs();
+            }
+            //是否有tempHeadImg文件
+            File file = new File(User.SDCARD_USER_IMAGE_PATH + "/tempHeadImg.jpg");
+            if(file.exists()){
+                file.delete();
+            }
+            //提示用户成功，并返回
+            String successResponse = responseObject.get("msg").toString();
+            //Toast.makeText(instance, successResponse, Toast.LENGTH_LONG).show();//发布的进度信息
+
+            //instance.finish();
+        }
+    } catch (UnsupportedEncodingException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (org.apache.http.ParseException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }*/
+  //}
+
+
+
+  @Override
+  public void onClick(View arg0) {
+    // TODO Auto-generated method stub
+    switch (arg0.getId()) {
+      case R.id.imageView1:
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("选择照片");
+
+        builder.setPositiveButton("相机",
+          new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface
+
+                              dialog, int which) {
+            Intent intent = new Intent(
+                "android.media.action.IMAGE_CAPTURE");
+            startActivityForResult(intent, 0);
+
+          }
+        });
+        builder.setNegativeButton("相册",
+          new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface
+
+                              dialog, int which) {
+            Intent intent = new Intent(
+              Intent.ACTION_PICK,
+              android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, 1);
+
+          }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+        break;
+
+      default:
+        break;
+    }
+   
+  }
+}
+
+

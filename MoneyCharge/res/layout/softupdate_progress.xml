@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.zhy.view.RoundProgressBarWidthNumber
+            android:id="@+id/id_progress02"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dip"
+            android:layout_marginBottom="30dip"
+            android:progress="0"
+            zhy:progress_text_color="#00a1ea"
+            zhy:progress_text_size="28sp"
+            zhy:progress_unreached_color="#00a1ea" />
+    </LinearLayout>
+
+</LinearLayout>

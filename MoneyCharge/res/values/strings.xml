@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">快速记</string>
+    <string name="action_settings">Settings</string>
+
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="DialogText">
+        <item name="android:textColor">#6e0000</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="enable">
+        <item name="android:background">#21a0a0</item>
+    </style>
+
+    <style name="disable">
+        <item name="android:background">#6e6e6e</item>
+    </style>
+
+    <style name="DialogText.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <string name="spn_prompt_category">类别</string>
+    <string name="spn_prompt_subcategory">子类别</string>
+    <string name="spn_prompt_account">账户</string>
+    <string name="spn_prompt_corporation">商家</string>
+    <string name="spn_prompt_project">项目</string>
+    <string name="desc1">系统默认用户无密码保护，若需要建立私\n密记账，请建立个人账户</string>
+    <string name="desc2">用户注册时，用户名密码无特殊限制，但\n请记牢，系统不提供找回服务</string>
+    <string name="desc3">还原默认设置将会把当前用户的收入、支\n出类型重置为初始状态,此操作请慎重</string>
+    <string name="desc4">在使用过程中遇到任何问题或有良好的建\n议，欢迎发送邮件到:\n linmp4@126.com 反馈! 谢谢！</string>
+    <string name="please_speak">请说话</string>
+    <string name="speaking">说话中</string>
+    <string name="cancel">取消</string>
+    <string name="start">开始</string>
+    <string name="start_dialog">调用语音识别对话框</string>
+    <string name="status">状态：</string>
+    <string name="tofinish">说完</string>
+    <string name="in_recog">正在识别</string>
+    <string name="finished">完成:</string>
+    <string name="error_occur">出错: 0x%1$s</string>
+    <string name="error_start">启动失败: 0x%1$s</string>
+    <string name="is_canceled">已取消</string>
+    <string name="try_again">重试</string>
+    <string name="volume">音量</string>
+    <string name="start_tune">开始音</string>
+    <string name="end_tune">结束音</string>
+    <string name="setting">设置</string>
+    <string name="choose_prop_type">请选择垂直领域类型：</string>
+    <string name="choose_language">请选择识别语言：</string>
+    <string name="choose_dialog_theme">请选择识别对话框样式：</string>
+    <string name="play_start_sound">播放开始音</string>
+    <string name="play_end_sound">播放结束音</string>
+    <string name="dialog_tips_sound">对话框提示音</string>
+    <string name="show_vol">显示识别音量</string>
+    <string name="use_default_audio_source">使用麦克风输入</string>
+    <string name="nlp">启用语义解析</string>
+    <string name="more">更多示例</string>
+    <string name="view_html">点击查看Html效果</string>
+    <string name="activity_label_dialog_tips">识别对话框提示语</string>
+    <string name="activity_label_api">Api方式识别</string>
+    <string name="activity_desc_api">开发者可以自定义识别的UI</string>
+    <string name="activity_label_external">外部音频识别</string>
+    <string name="activity_desc_external">不使用麦克风录音，使用外部音频识别。只支持PCM16位单声道音频。采样率16K或者8K</string>
+    <string name="activity_label_nlu">语义理解示例</string>
+    <string name="activity_desc_nlu">将语音转换为意图</string>
+    <string name="dialog_show_tips_onstart">启动时显示提示列表</string>
+    <string name="dialog_show_tips_onstart_summary">语音识别对话框展示后，不启动识别，首先展示提示列表，需要用户手工点击开始按钮</string>
+    <string name="dialog_show_tip_onsilent">静音时显示一条提示</string>
+    <string name="dialog_show_tip_onsilent_summary">识别启动后，如果3秒没有检测到语音起点，在声音动效下方显示一条提示语</string>
+    <string name="dialog_show_help_onsilent">静音异常时显示帮助按钮</string>
+    <string name="dialog_show_help_onsilent_summary">由于没有检测到用户语音，超时异常后将取消按钮替换为帮助按钮</string>
+
+    <string-array name="prop_tpye">
+        <item>输入</item>
+        <item>热词</item>
+        <item>地图</item>
+        <item>音乐</item>
+        <item>视频</item>
+        <item>应用</item>
+        <item>网页</item>
+        <item>健康</item>
+        <item>购物</item>
+        <item>打电话</item>
+    </string-array>
+    <string-array name="languages">
+        <item>普通话(中国)</item>
+        <item>粤语(中国)</item>
+        <item>英语(美国)</item>
+    </string-array>
+    <string-array name="dialog_theme">
+        <item>暗蓝</item>
+        <item>亮蓝</item>
+        <item>暗绿</item>
+        <item>亮绿</item>
+        <item>暗橙</item>
+        <item>亮橙</item>
+        <item>暗红</item>
+        <item>亮红</item>
+    </string-array>
+    <string-array name="command_tips">
+        <item>北京天气怎么样</item>
+        <item>打电话给移动客服</item>
+        <item>北京到上海的飞机票</item>
+        <item>讲个笑话</item>
+        <item>百度大厦怎么走</item>
+    </string-array>
+
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新\u2026</string>
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">正在加载中\u2026</string>
+    <string name="lockscreen_access_pattern_start">"开始绘制图案"</string>
+    <string name="lockscreen_access_pattern_cleared">"图案已清除"</string>
+    <string name="lockscreen_access_pattern_cell_added">"已添加单元格"</string>
+    <string name="lockscreen_access_pattern_detected">"图案绘制完成"</string>
+    <string name="lockpattern_retry_button_text">"重试"</string>
+    <string name="lockpattern_continue_button_text">"继续"</string>
+    <string name="lockpattern_confirm_button_text">"确认"</string>
+    <string name="lockpattern_recording_intro_header">"绘制解锁图案"</string>
+    <string name="lockpattern_settings_help_how_to_record">"如何绘制解锁图案"</string>
+    <string name="lockpattern_recording_incorrect_too_short">"至少连接4个点，请重试"</string>
+    <string name="lockpattern_pattern_entered_header">"图案已记录"</string>
+    <string name="lockpattern_need_to_confirm">"请再次绘制解锁图案"</string>
+    <string name="lockpattern_need_to_unlock_wrong">"与上次输入不一致，请重试"</string>
+    <string name="lockpattern_pattern_confirmed_header">"确认保存新解锁图案"</string>
+    <string name="lockpattern_recording_inprogress">"完成后松开手指"</string>
+    <string name="gesture_password_guide_text">你可以创建一个解锁图案，这样他人在借用你的手机时，将无法打开应用。</string>
+    <string name="gesture_password_guide_creat_btn">创建手势密码</string>
+    <string name="please_select">请选择</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="multi_choice">弹出多选框</string>
+
+</resources>

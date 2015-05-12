@@ -1,0 +1,105 @@
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:stretchColumns="0,3" 
+	>
+	
+    <TableRow 	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" 
+		android:layout_margin="10dp"
+		android:layout_weight="0.2"
+		android:gravity="bottom">      
+    <TextView/>
+    <TextView
+    	android:text="用   户  名："  
+    	android:layout_width="wrap_content"
+    	android:textSize="20sp"
+		android:textColor="#a00000" 
+    	android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/rusername" 
+    	android:layout_width="wrap_content"
+    	android:minWidth="80dp"
+    	android:singleLine="true"
+    	android:maxWidth="120dp"
+    	android:textSize="20sp"
+    	android:layout_height="wrap_content" 
+    	android:background="#dcdcc8"/>
+    <TextView/>
+    </TableRow>
+    <TableRow android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:layout_weight="0.02"
+		android:gravity="center_vertical">    
+    <TextView/>
+    <TextView 
+    	android:text="密         码："  
+    	android:layout_width="wrap_content"
+    	android:textSize="20sp"
+		android:textColor="#a00000" 
+    	android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/rpassword" 
+    	android:layout_width="wrap_content"
+    	android:textSize="20sp"
+    	android:minWidth="80dp"
+    	android:singleLine="true"
+    	android:maxWidth="120dp"
+    	android:layout_height="wrap_content" 
+    	android:inputType="textPassword"  
+    	android:background="#dcdcc8"/>
+    </TableRow>
+     <TableRow android:id="@+id/tablerow4"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" 
+		android:layout_margin="10dp"
+		android:layout_weight="0.02"
+		android:gravity="center_vertical">   
+    <TextView/>
+    <TextView 
+    	android:text="确认密码："  
+    	android:layout_width="wrap_content"
+    	android:textSize="20sp"
+		android:textColor="#a00000" 
+    	android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/rrpassword" 
+    	android:layout_width="wrap_content"
+    	android:minWidth="80dp"
+    	android:singleLine="true"
+    	android:maxWidth="120dp"
+    	android:textSize="20sp"
+    	android:layout_height="wrap_content" 
+    	android:inputType="textPassword"  
+    	android:background="#dcdcc8"/>
+    </TableRow>
+    <TableRow android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+		android:layout_margin="15dp"
+		android:layout_weight="0.6"
+		android:gravity="top">    
+    <TextView/>
+  
+	<Button android:id="@+id/btnrCancle"  
+		android:layout_height="wrap_content"  
+		android:background="#a00000"
+		android:textColor="#ffffff" 
+		android:layout_marginRight="15dp"
+		android:layout_width="100dp"
+		android:text="取消"
+	/>	
+	 
+	<Button android:id="@+id/btnrRegister" 
+		android:layout_height="wrap_content" 
+		android:background="#a00000"
+		android:textColor="#ffffff"  
+		android:layout_width="100dp"
+		android:text="注册"/>  
+    <TextView/>  
+    </TableRow>
+     
+	    
+    
+  
+</TableLayout>
+

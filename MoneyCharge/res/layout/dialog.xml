@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:minWidth="280dip"
+    android:layout_height="wrap_content">
+ 
+    <LinearLayout 
+        android:orientation="vertical"
+        android:background="#6e6e6e"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+ 
+        <TextView
+            style="@style/DialogText.Title"
+            android:id="@+id/title"
+            android:paddingRight="8dip"
+            android:paddingLeft="8dip" 
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+ 
+    </LinearLayout>
+ 
+    <LinearLayout 
+        android:id="@+id/content"
+        android:orientation="vertical"  
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp">
+ 
+        <TextView
+            style="@style/DialogText"
+            android:id="@+id/message"
+            android:padding="5dip" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+ 
+    </LinearLayout>
+ 
+    <LinearLayout 
+        android:orientation="horizontal" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+       
+        
+         <Button 
+            android:id="@+id/negativeButton"
+            android:layout_marginTop="3dip"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:textColor="#6e6e6e"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+ 
+         <Button 
+            android:id="@+id/positiveButton"
+            android:layout_marginTop="3dip"
+            android:layout_width="0dip"
+            android:background="#6e0000"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+        
+       
+		 
+       
+ 
+    </LinearLayout>
+ 
+</LinearLayout>

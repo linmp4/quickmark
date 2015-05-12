@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/iteminfo" android:orientation="vertical"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:layout_marginTop="5dp"
+	android:weightSum="1">
+	<LinearLayout android:id="@+id/linearLayout1"
+			android:layout_height="match_parent" 
+			android:layout_width="fill_parent"
+			android:layout_weight="0.04"
+			android:orientation="vertical">
+		<RelativeLayout android:layout_height="wrap_content" 
+			android:layout_width="match_parent">
+		<TextView android:text="我的支出" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center" 
+			android:textSize="32dp"
+			android:textColor="#820000"
+			android:padding="10dp"
+		/>
+		</RelativeLayout>
+	</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout2"
+			android:layout_height="0dp" 
+			android:layout_width="fill_parent"
+			android:orientation="vertical" 
+			android:layout_marginLeft="4dp"
+			android:layout_marginRight="4dp"
+			android:layout_weight="0.95">
+		<ListView android:id="@+id/lvoutaccountinfo" 
+			android:layout_width="match_parent" 
+			android:layout_height="match_parent"
+	 		android:listSelector="@drawable/selector"
+			android:cacheColorHint="@android:color/transparent"
+			android:scrollbarAlwaysDrawVerticalTrack="true"
+			/>
+	</LinearLayout>
+	
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="bottom"
+		android:orientation="vertical">
+	<Button
+	    android:id="@+id/baddpay"
+	    android:layout_width="fill_parent"
+		android:background="#a00000"
+		android:textColor="#ffffff"
+	    android:textSize="22sp"
+		android:layout_weight="0.6"
+	    android:layout_height="0dp"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="新增">
+	</Button> 
+	</LinearLayout>
+</LinearLayout>

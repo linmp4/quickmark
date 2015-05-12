@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/report_activity_bg"
+    tools:context=".PayChart" >
+
+    <RelativeLayout
+        android:id="@+id/actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragment2"
+        android:paddingBottom="5dip"
+        android:paddingRight="10dip"
+        android:paddingTop="5dip" >
+
+        <ImageView
+            android:id="@+id/example_left2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/left_sild" />
+
+        <ImageView
+            android:id="@+id/example_right2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/example_center"
+            style="@style/TextView.Middle.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="记账"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/controlbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionbar"
+        android:layout_marginTop="20dp" >
+
+        <ImageView
+            android:id="@+id/example_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/chart_left_btn" />
+
+        <ImageView
+            android:id="@+id/example_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/chart_right_btn" />
+    </RelativeLayout>
+
+    <com.cwp.chart.PieChart
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp" >
+
+        <com.cwp.chart.PieView
+            android:id="@+id/lotteryView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:tag="pieView" />
+
+        <TextView
+            android:id="@+id/MyTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="25dip"
+            android:gravity="center"
+            android:paddingBottom="20dip"
+            android:tag="pieText"
+            android:textColor="#FFF"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/MyTVbottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="8dip"
+            android:gravity="center"
+            android:paddingTop="28dip"
+            android:tag="pieText"
+            android:textColor="#ffffffff"
+            android:textSize="12sp" />
+    </com.cwp.chart.PieChart>
+
+    <LinearLayout
+        android:id="@+id/pdataselect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:layout_weight="0.01"
+        android:background="#800000"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="从："
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pyear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="年"
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pmonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:entries="@array/time_month"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="月"
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:entries="@array/time_day"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="到："
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pyeare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="年"
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pmonthe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:entries="@array/time_month"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="月"
+                    android:textColor="#ffffff" />
+
+                <Spinner
+                    android:id="@+id/pdaye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:entries="@array/time_day"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/panytime"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="2"
+            android:background="#e6e6e6"
+            android:listSelector="@drawable/selector"
+            android:text="设置"
+            android:textColor="#800000" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/toolbar_bg_normal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="1dp"
+            android:gravity="center_horizontal" >
+
+            <FrameLayout
+                android:id="@+id/layout_friendfeed2"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_friendfeed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="16.0dip"
+                    android:src="@drawable/tab_friendfeed_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginTop="6.0dip"
+                    android:text="明细"
+                    android:textColor="@color/tab_friendfeed_text"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_myfeed2"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_myfeed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="16.0dip"
+                    android:src="@drawable/tab_myfeed_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginTop="6.0dip"
+                    android:text="报表"
+                    android:textColor="@color/tab_myfeed_text"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_home2"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_home2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="16.0dip"
+                    android:src="@drawable/tab_home_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginTop="6.0dip"
+                    android:text="账户"
+                    android:textColor="@color/tab_home_text"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_more2"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_more2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="16.0dip"
+                    android:src="@drawable/tab_more_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginTop="6.0dip"
+                    android:text="更多"
+                    android:textColor="@color/tab_more_text"
+                    android:textSize="12sp" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/toggle_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/toolbar_btn_normal" />
+
+    <ImageView
+        android:id="@+id/plus_btn2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/frameLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dip"
+        android:paddingBottom="18dip"
+        android:src="@drawable/toolbar_plus" />
+
+</RelativeLayout>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#820000"
+    android:stretchColumns="1" >
+
+    <LinearLayout
+        android:id="@+id/about_top"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#e6e6e6"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <TableRow
+        android:layout_height="60dp"
+        android:layout_marginTop="3dp"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="当前用户"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/useracc"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:text="默认用户"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="系统用户个数"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/countuser"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="1个"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="支出记录"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/countpay"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="0条"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="收入记录"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/countincome"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="0条"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="手势密码"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/gesturepw"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="关"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/gesturepwmd"
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/gesturepwmdtext"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="修改手势密码"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:drawableRight="@drawable/hint"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="发送错误日志功能"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/sendlog"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="关"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="用户反馈"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:text="点此进入"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/description"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="2dp"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="系统使用说明书"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff"
+            android:drawableRight="@drawable/hint"
+            android:gravity="right"
+            android:paddingBottom="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="9dp"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="60dp"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:text="系统版本"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/app_version"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:text="1.0.0.1"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="60dp"
+        android:layout_marginBottom="3dp"
+        android:background="#e6e6e6" >
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:background="#ffffff"
+            android:paddingBottom="13dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:textColor="#500000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/updateapp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#ffffff"
+            android:gravity="right"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:text="检查更新"
+            android:textColor="#464646"
+            android:textSize="14sp" />
+    </TableRow>
+
+</TableLayout>

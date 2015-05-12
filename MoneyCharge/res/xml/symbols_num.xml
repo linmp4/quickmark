@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="0px"
+    android:keyHeight="@dimen/key_height"
+    android:keyWidth="27%p"
+    android:verticalGap="0px" >
+
+    <Row>
+        <Key
+            android:codes="49"
+            android:keyIcon="@drawable/key_1" />
+        <Key
+            android:codes="50"
+            android:keyIcon="@drawable/key_2" />
+        <Key
+            android:codes="51"
+            android:keyIcon="@drawable/key_3" />
+        <Key
+            android:codes="-7"
+            android:keyIcon="@drawable/keyboard_done_2"
+            android:keyWidth="19%p" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="52"
+            android:keyIcon="@drawable/key_4" />
+        <Key
+            android:codes="53"
+            android:keyIcon="@drawable/key_5" />
+        <Key
+            android:codes="54"
+            android:keyIcon="@drawable/key_6" />
+        <Key
+            android:codes="-9"
+            android:keyIcon="@drawable/keyboard_voice"
+            android:keyWidth="19%p" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="55"
+            android:keyIcon="@drawable/key_7" />
+        <Key
+            android:codes="56"
+            android:keyIcon="@drawable/key_8" />
+        <Key
+            android:codes="57"
+            android:keyIcon="@drawable/key_9" />
+        <Key
+            android:codes="-7"
+            android:keyHeight="118dip"
+            android:keyIcon="@drawable/keyboard_done"
+            android:keyWidth="19%p" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="-8"
+            android:keyIcon="@drawable/key_point" />
+        <Key
+            android:codes="48"
+            android:keyIcon="@drawable/key_0" />
+        <Key
+            android:codes="-5"
+            android:keyIcon="@drawable/keyboard_delete" />
+    </Row>
+
+</Keyboard>

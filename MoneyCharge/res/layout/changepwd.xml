@@ -1,0 +1,168 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="center_vertical"
+	android:stretchColumns="0,3" 
+	android:id="@+id/oldTableL"
+	> 
+     <LinearLayout android:layout_width="fill_parent"
+        android:id="@+id/cpyanzheng"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:gravity="center_horizontal"
+    	android:layout_marginBottom="15dp"  >
+	    <TextView
+		    android:id="@+id/cptitle"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="left"
+	    	android:textSize="20sp"
+		    android:layout_margin="15dp"
+		    android:text="请先验证账户：" />
+	    <TableRow 	android:layout_width="wrap_content"
+		   	android:layout_height="wrap_content"
+		   	android:layout_marginBottom="15dp">    
+		   <TextView/>
+		   <TextView
+		   	android:text="用   户  名："  
+			android:textColor="#a00000"
+		   	android:layout_width="wrap_content"
+	    	android:textSize="20sp"
+		   	android:layout_height="wrap_content"/>
+		   <EditText android:id="@+id/cpusername" 
+		   	android:layout_width="wrap_content"
+		   	android:minWidth="120dp"
+	    	android:textSize="20sp"
+		   	android:maxWidth="220dp"
+    		android:singleLine="true"
+		   	android:layout_height="wrap_content" 
+		   	android:background="#dcdcc8"/>
+		   <TextView/>
+		   </TableRow>
+		   <TableRow android:layout_width="wrap_content"
+		   	android:layout_height="wrap_content"
+		   	android:layout_marginBottom="15dp">
+		   <TextView/>
+		   <TextView 
+		   	android:text="密         码："  
+			android:textColor="#a00000"
+		   	android:layout_width="wrap_content"
+	    	android:textSize="20sp"
+		   	android:layout_height="wrap_content"/>
+		   <EditText android:id="@+id/cppassword" 
+		   	android:layout_width="wrap_content"
+		   	android:minWidth="120dp"
+    		android:singleLine="true"
+		   	android:layout_height="wrap_content" 
+	    	android:textSize="20sp"
+		   	android:inputType="textPassword" 
+		   	android:maxWidth="220dp"
+		   	android:background="#dcdcc8"/>
+		   </TableRow>
+		    
+		   <TableRow android:layout_width="wrap_content"
+		   	android:layout_height="wrap_content"
+		   	android:layout_margin="15dp" >
+		   <TextView/>
+		 
+		<Button android:id="@+id/btncpCancle" 
+			android:layout_height="wrap_content"  
+			android:background="#a00000"
+			android:textColor="#ffffff"  
+			android:layout_marginRight="20dp"
+			android:layout_width="100dp"
+			android:text="取消"
+		/>	
+		 
+		<Button android:id="@+id/btncpsure" 
+			android:layout_height="wrap_content"  
+			android:background="#a00000"
+			android:textColor="#ffffff"  
+			android:layout_width="100dp"
+			android:text="验证"/>  
+		<TextView/>  
+		</TableRow>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+        android:id="@+id/cphint"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:gravity="center_horizontal"
+    	android:layout_marginBottom="15dp" 
+    	android:visibility="gone">
+	    <TextView
+	       android:id="@+id/cptitle2"
+		   android:layout_width="fill_parent"
+		   android:layout_height="wrap_content"
+	       android:layout_gravity="left"
+	    	android:textSize="20sp"
+	       android:layout_margin="15dp"
+	       android:text="请修改用户名密码：" /> 
+	    <TableRow 	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginBottom="15dp">    
+	    <TextView/>
+	    <TextView
+	    	android:text="用   户  名：" 
+			android:textColor="#a00000"
+	    	android:textSize="20sp"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"/>
+	    <EditText android:id="@+id/cptusername"
+	    	android:textSize="20sp"
+	    	android:layout_width="wrap_content"
+		   	android:minWidth="80dp"
+		   	android:singleLine="true"
+		   	android:maxWidth="120dp"
+	    	android:layout_height="wrap_content" 
+	    	android:background="#dcdcc8"/>
+	    <TextView/>
+	    </TableRow>
+	    <TableRow android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_margin="15dp">
+	    <TextView/>
+	    <TextView 
+	    	android:text="密         码：" 
+			android:textColor="#a00000"
+	    	android:textSize="20sp"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"/>
+	    <EditText android:id="@+id/cptpassword"
+	    	android:textSize="20sp"
+		   	android:minWidth="80dp"
+		   	android:singleLine="true"
+		   	android:maxWidth="120dp"
+	    	android:layout_width="wrap_content" 
+	    	android:layout_height="wrap_content"   
+	    	android:background="#dcdcc8"/>
+	    </TableRow>    
+	     <TableRow android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginBottom="15dp" >
+	    <TextView/>
+	  
+		<Button android:id="@+id/btncptCancle" 
+			android:layout_height="wrap_content"    
+			android:background="#a00000"
+			android:textColor="#ffffff"
+			android:layout_marginRight="20dp"
+			android:layout_width="100dp"
+			android:text="取消"
+		/>	
+		 
+		<Button android:id="@+id/btncptsure"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"    
+			android:background="#a00000"
+			android:textColor="#ffffff"
+			android:text="修改"/>  
+	    <TextView/>  
+	    </TableRow>
+    </LinearLayout>
+     
+	    
+    
+  
+</TableLayout>  

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >  
+      
+    <!-- 按钮按下时显示bg_pressed图片 -->  
+    <item   
+        android:state_pressed="true"  
+        android:drawable="@color/grey"/>  
+      
+    <!-- 按钮抬起的时候显示bg_normal图片 -->  
+    
+  
+</selector> 

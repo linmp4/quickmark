@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#820000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/inptext_top"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/inptext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="0.1"
+        android:background="#ebeae9"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="收入类型管理"
+        android:textColor="#820000"
+        android:textSize="32sp" />
+
+    <ListView
+        android:id="@+id/typelist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:background="#ffffff"
+        android:cacheColorHint="@android:color/transparent"
+        android:choiceMode="multipleChoice"
+        android:descendantFocusability="blocksDescendants"
+        android:listSelector="@drawable/selector"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:verticalScrollbarPosition="right" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="3dp"
+        android:layout_weight="0.05"
+        android:background="#ebeae9"
+        android:orientation="horizontal"
+        android:paddingTop="5dp" >
+
+        <Button
+            android:id="@+id/addtype"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_horizontal"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="#820000"
+            android:text="添加"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/deletetype"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_horizontal"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="#820000"
+            android:text="删除"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</LinearLayout>

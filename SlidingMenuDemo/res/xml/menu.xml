@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <Preference
+        android:key="a"
+        android:title="第一个MENU"
+        />
+
+    <Preference
+        android:key="b"
+        android:title="第二个MENU"
+        />
+
+    <Preference
+        android:key="n"
+        android:title="第N个MENU"
+        />
+
+
+</PreferenceScreen>

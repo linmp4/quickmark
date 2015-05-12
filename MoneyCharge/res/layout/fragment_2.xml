@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+      <FrameLayout  
+        android:id="@+id/frameLayout1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="66dp"  
+        android:layout_alignParentBottom="true"  
+        android:layout_alignParentLeft="true"  
+        android:background="@drawable/toolbar_bg_normal" >  
+  
+        <LinearLayout  
+            android:layout_width="fill_parent"  
+            android:layout_height="fill_parent"  
+            android:layout_marginTop="1dp"  
+            android:gravity="center_horizontal" >  
+  
+            <FrameLayout  
+                android:id="@+id/layout_friendfeed"  
+                android:layout_width="fill_parent"  
+                android:layout_height="60dp"  
+                android:layout_weight="1">  
+  
+                <ImageView  
+                    android:id="@+id/image_friendfeed"  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="top|center"  
+                    android:layout_marginTop="16.0dip"  
+                    android:src="@drawable/tab_friendfeed_btn" />  
+  
+                <TextView  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="bottom|center"  
+                    android:layout_marginTop="6.0dip"   
+                    android:text="明细"  
+                    android:textColor="@color/tab_friendfeed_text"  
+                    android:textSize="12sp" />  
+            </FrameLayout>  
+  
+            <FrameLayout  
+                android:id="@+id/layout_myfeed"  
+                android:layout_width="fill_parent"  
+                android:layout_height="60dp"  
+                android:layout_weight="1" >  
+  
+                <ImageView  
+                    android:id="@+id/image_myfeed"  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="top|center"  
+                    android:layout_marginTop="16.0dip"  
+                    android:src="@drawable/tab_myfeed_btn" />  
+  
+                <TextView  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="bottom|center"  
+                    android:layout_marginTop="6.0dip"    
+                    android:text="报表"  
+                    android:textColor="@color/tab_myfeed_text"  
+                    android:textSize="12sp" />  
+            </FrameLayout>  
+  
+            <FrameLayout  
+                android:layout_width="fill_parent"  
+                android:layout_height="wrap_content"  
+                android:layout_weight="1" >  
+            </FrameLayout>  
+  
+            <FrameLayout  
+                android:id="@+id/layout_home"  
+                android:layout_width="fill_parent"  
+                android:layout_height="60dp"  
+                android:layout_weight="1" >  
+  
+                <ImageView  
+                    android:id="@+id/image_home"  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="top|center"  
+                    android:layout_marginTop="16.0dip"  
+                    android:src="@drawable/tab_home_btn" />  
+  
+                <TextView  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="bottom|center"  
+                    android:layout_marginTop="6.0dip"  
+                    android:text="账户"  
+                    android:textColor="@color/tab_home_text"  
+                    android:textSize="12sp" />  
+            </FrameLayout>  
+  
+            <FrameLayout  
+                android:id="@+id/layout_more"  
+                android:layout_width="fill_parent"  
+                android:layout_height="60dp"  
+                android:layout_weight="1" >  
+  
+                <ImageView  
+                    android:id="@+id/image_more"  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="top|center"  
+                    android:layout_marginTop="16.0dip"  
+                    android:src="@drawable/tab_more_btn" />  
+  
+                <TextView  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:layout_gravity="bottom|center"  
+                    android:layout_marginTop="6.0dip"  
+                    android:text="更多"  
+                    android:textColor="@color/tab_more_text"  
+                    android:textSize="12sp" />  
+            </FrameLayout>  
+        </LinearLayout>  
+    </FrameLayout>  
+<!--  
+    <FrameLayout  
+        android:id="@+id/toggle_btnLayout" 
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" 
+        android:layout_alignParentLeft="true" >
+ -->
+    <ImageView  
+        android:id="@+id/toggle_btn"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_alignParentBottom="true"  
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/toolbar_btn_normal" /> 
+<!--  
+  	</FrameLayout>
+--> 
+    <ImageView  
+        android:id="@+id/plus_btn"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        android:layout_alignTop="@+id/frameLayout1"  
+        android:layout_centerHorizontal="true"  
+        android:layout_marginTop="24dip"  
+        android:src="@drawable/toolbar_plus" />  
+    
+    
+</RelativeLayout>

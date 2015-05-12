@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#820000"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/settinglisv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="50dp"
+        android:background="#ffffff"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#e6e6e6"
+        android:dividerHeight="1px"
+        android:entries="@array/settingtype"
+        android:listSelector="@drawable/selector"
+        android:padding="10dp" >
+    </ListView>
+
+</LinearLayout>

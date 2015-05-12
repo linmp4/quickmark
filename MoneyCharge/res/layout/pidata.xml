@@ -1,0 +1,184 @@
+<LinearLayout
+    android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent" 
+    android:orientation="vertical">
+	<LinearLayout android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal">
+	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:layout_height="40dp"
+	        android:text="收-支 总统计表"
+	        android:background="#800000"
+	        android:textColor="#ffffff"
+	        android:textSize="28dp"
+	        />
+	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/chart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4" 
+        android:orientation="vertical" >
+	</LinearLayout>
+
+	<LinearLayout
+	    android:id="@+id/dataselect"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="0.01"
+	    android:layout_marginTop="-70dp"
+	    android:background="#800000"
+	    android:padding="10dp"
+	    android:orientation="horizontal" > 
+	    <LinearLayout 
+	        android:orientation="vertical"
+	        android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"
+		    android:layout_weight="9">
+	        <LinearLayout android:orientation="horizontal"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" 
+		        android:layout_marginBottom="10dp">
+	            <Spinner android:id="@+id/year"
+			        android:layout_weight="1"
+				    android:layout_height="wrap_content"
+			        android:gravity="center_horizontal"
+			        android:background="#ffffff"
+			        android:layout_width="wrap_content"  />  
+			    
+			    <TextView 
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content" 
+			        android:layout_weight="1"
+			        android:textColor="#ffffff"
+			        android:gravity="center_horizontal"
+			        android:text="年"
+			        /> 
+			        
+				<Spinner android:id="@+id/month"
+			        android:layout_weight="1"
+			        android:background="#ffffff"
+			        android:gravity="center_horizontal"
+				    android:layout_height="wrap_content"
+			        android:layout_width="wrap_content" 
+				    android:entries="@array/time_month"/> 
+		         
+			    
+			    <TextView 
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content" 
+			        android:gravity="center_horizontal"
+			        android:layout_weight="1"
+			        android:textColor="#ffffff"
+			        android:text="月"
+			        />
+			     
+			        
+				<Spinner android:id="@+id/day"
+			        android:layout_weight="1"
+			        android:gravity="center_horizontal"
+			        android:background="#ffffff"
+				    android:layout_height="wrap_content"
+			        android:layout_width="wrap_content" 
+			        android:entries="@array/time_day" /> 
+         
+	        </LinearLayout>
+	        <LinearLayout android:orientation="horizontal"
+		        android:layout_width="fill_parent" 
+		        android:layout_height="fill_parent">
+	              <Spinner android:id="@+id/yeare"
+			        android:layout_weight="1"
+				    android:layout_height="wrap_content"
+			        android:gravity="center_horizontal"
+			        android:background="#ffffff"
+			        android:layout_width="wrap_content"  />  
+			    
+			    <TextView 
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content" 
+			        android:layout_weight="1"
+			        android:textColor="#ffffff"
+			        android:gravity="center_horizontal"
+			        android:text="年"
+			        /> 
+			        
+				<Spinner android:id="@+id/monthe"
+			        android:layout_weight="1"
+			        android:background="#ffffff"
+			        android:gravity="center_horizontal"
+				    android:layout_height="wrap_content"
+			        android:layout_width="wrap_content" 
+				    android:entries="@array/time_month"/> 
+		         
+			    
+			    <TextView 
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content" 
+			        android:gravity="center_horizontal" 
+			        android:layout_weight="1"
+			        android:textColor="#ffffff"
+			        android:text="月"
+			        />
+			     
+			        
+				<Spinner android:id="@+id/daye"
+			        android:layout_weight="1"
+			        android:gravity="center_horizontal"
+			        android:background="#ffffff"
+				    android:layout_height="wrap_content"
+			        android:layout_width="wrap_content" 
+			        android:entries="@array/time_day" /> 
+	        </LinearLayout>
+	    </LinearLayout>
+	        
+		
+	    
+	    <Button
+	        android:id="@+id/anytime"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:layout_weight="2"
+	        android:layout_marginLeft="10dp"
+	        android:background="#e6e6e6"
+	        android:text="任意时间段"
+		 	android:listSelector="@drawable/selector" 
+	        android:textColor="#800000" />
+
+	    
+	    
+	</LinearLayout>  
+	<LinearLayout
+	    android:id="@+id/dataselect"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:orientation="horizontal" >
+
+	    <Button
+	        android:id="@+id/before"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:layout_weight="1"
+	        android:background="#800000"
+	        android:text="上月"
+		 	android:listSelector="@drawable/selector" 
+	        android:textColor="#ffffff" />
+
+	     
+
+	    <Button
+	        android:id="@+id/after"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:layout_weight="1"
+		 	android:listSelector="@drawable/selector" 
+	        android:background="#800000"
+	        android:text="下月"
+	        android:textColor="#ffffff" />
+	    
+	</LinearLayout>    
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cwp.cmoneycharge"
+    android:versionCode="2"
+    android:versionName="1.09" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <application
+        android:name=".CrashApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="40fd2c7bc96ff0fc9eccdbabc2b96984" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="552bc81efd98c518a50008b2" />
+        <!-- Push UMENG_MESSAGE_SECRET -->
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="UMENG_MESSAGE_SECRET" >
+        </meta-data>
+        <!-- umeng push -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" />
+
+        <activity
+            android:name="com.cwp.cmoneycharge.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cwp.cmoneycharge.About" />
+        <activity android:name="com.cwp.cmoneycharge.Account" />
+        <activity android:name="com.cwp.cmoneycharge.AddIncome" />
+        <activity android:name="com.cwp.cmoneycharge.AddNote" />
+        <activity android:name="com.cwp.cmoneycharge.AddPay" />
+        <activity android:name="com.cwp.cmoneycharge.Author" />
+        <activity android:name="com.cwp.cmoneycharge.ChangePwd" />
+        <activity android:name="com.cwp.cmoneycharge.Data" />
+        <activity android:name="com.cwp.cmoneycharge.Description" />
+        <activity android:name="com.cwp.cmoneycharge.Income" />
+        <activity android:name="com.cwp.cmoneycharge.IncomeData" />
+        <activity android:name="com.cwp.cmoneycharge.InPtypeManager" />
+        <activity android:name="com.cwp.cmoneycharge.Login" />
+        <activity android:name="com.cwp.cmoneycharge.ModifyInP" />
+        <activity android:name="com.cwp.cmoneycharge.ModifyNote" />
+        <activity android:name="com.cwp.cmoneycharge.Note" />
+        <activity android:name="com.cwp.cmoneycharge.Pay" />
+        <activity android:name="com.cwp.cmoneycharge.PayData" />
+        <activity android:name="com.cwp.cmoneycharge.PIData" />
+        <activity android:name="com.cwp.cmoneycharge.Register" />
+        <activity android:name="com.cwp.cmoneycharge.Setting" />
+        <activity android:name="cwp.moneycharge.dao.AccountDAO" />
+        <activity android:name="cwp.moneycharge.dao.DBOpenHelper" />
+        <activity android:name="cwp.moneycharge.dao.IncomeDAO" />
+        <activity android:name="cwp.moneycharge.dao.ItypeDAO" />
+        <activity android:name="cwp.moneycharge.dao.NoteDAO" />
+        <activity android:name="cwp.moneycharge.dao.PayDAO" />
+        <activity android:name="cwp.moneycharge.dao.PtypeDAO" />
+        <activity android:name="cwp.moneycharge.model.ActivityManager" />
+        <activity android:name="cwp.moneycharge.model.CustomDialog" />
+        <activity android:name="cwp.moneycharge.model.Datapicker" />
+        <activity android:name="cwp.moneycharge.model.KindData" />
+        <activity android:name="cwp.moneycharge.model.Tb_account" />
+        <activity android:name="cwp.moneycharge.model.Tb_income" />
+        <activity android:name="cwp.moneycharge.model.Tb_itype" />
+        <activity android:name="cwp.moneycharge.model.Tb_note" />
+        <activity android:name="cwp.moneycharge.model.Tb_pay" />
+        <activity android:name="cwp.moneycharge.model.Tb_ptype" />
+        <activity android:name="com.cwp.cmoneycharge.SettingActivity" />
+        <activity android:name="com.cwp.cmoneycharge.PayChart" />
+        <activity android:name="com.umeng.fb.example.CustomActivity" />
+        <activity
+            android:name="com.example.testpic.PublishedActivity"
+            android:theme="@style/HalfTransparent" />
+        <activity
+            android:name="com.cwp.cmoneycharge.SearchActivity"
+            android:theme="@style/HalfTransparent"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
+            android:name="com.cwp.pattern.CreateGesturePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.cwp.pattern.GuideGesturePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.cwp.pattern.UnlockGesturePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.testpic.ImageGridActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.testpic.TestPicActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.testpic.PhotoActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+    </application>
+
+</manifest>

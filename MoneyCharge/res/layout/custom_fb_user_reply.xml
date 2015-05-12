@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/user_portrait"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/fb_reply_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="35dp"
+        android:layout_toRightOf="@id/user_portrait"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="35dp"
+            android:layout_toRightOf="@id/user_portrait"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/fb_reply_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fb_user_reply_bg"
+                android:gravity="left"
+                android:paddingBottom="12dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="12dp"
+                android:paddingTop="12dp"
+                android:textColor="#070707"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/fb_reply_state_failed"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:contentDescription="图片"
+                android:src="@drawable/fb_msg_tip"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/fb_reply_progressBar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fb_reply_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/fb_reply_layout"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="10sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

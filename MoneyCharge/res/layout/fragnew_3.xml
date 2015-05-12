@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/December_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+ >
+
+        <RelativeLayout
+            android:id="@+id/December_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/December_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="12月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/December_day"
+                android:layout_marginLeft="10dp"
+                android:text="12.01-12.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/December_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/December_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/December_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/December_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/December_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/December_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/December_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/November_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/November_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/November_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="11月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/November_day"
+                android:layout_marginLeft="10dp"
+                android:text="11.01-11.30"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/November_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/November_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/November_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/November_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/November_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/November_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/November_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/October_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/October_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/October_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="10月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/October_day"
+                android:layout_marginLeft="10dp"
+                android:text="10.01-10.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/October_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/October_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/October_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/October_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/October_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/October_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/October_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/September_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/September_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/September_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="09月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/September_day"
+                android:layout_marginLeft="10dp"
+                android:text="09.01-09.30"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/September_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/September_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/September_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/September_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/September_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/September_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/September_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/August_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/August_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/August_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="08月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/August_day"
+                android:layout_marginLeft="10dp"
+                android:text="08.01-08.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/August_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/August_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/August_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/August_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/August_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/August_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/August_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/July_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/July_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/July_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="07月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/July_day"
+                android:layout_marginLeft="10dp"
+                android:text="07.01-07.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/July_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/July_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/July_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/July_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/July_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/July_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/July_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/June_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/June_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/June_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="06月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/June_day"
+                android:layout_marginLeft="10dp"
+                android:text="06.01-06.30"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/June_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/June_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/June_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/June_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/June_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/June_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/June_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/May_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/May_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/May_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="05月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/May_day"
+                android:layout_marginLeft="10dp"
+                android:text="05.01-05.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/May_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/May_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/May_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/traffic_arrow"
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/May_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/May_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ff8e6b"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/May_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/May_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/April_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/April_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/April_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="04月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/April_day"
+                android:layout_marginLeft="10dp"
+                android:text="04.01-04.30"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/April_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/April_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/April_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/April_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/April_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/April_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/April_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/March_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/March_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/March_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="03月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/March_day"
+                android:layout_marginLeft="10dp"
+                android:text="03.01-03.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/March_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/March_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/March_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/March_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/March_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/March_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/March_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/February_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/February_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/February_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="02月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/February_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/February_day"
+                android:layout_marginLeft="10dp"
+                android:text="02.01-02.28"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/February_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/February_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/February_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/February_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/February_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/February_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/February_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/January_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/January_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/rect_white_bg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/January_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="01月"
+                android:textColor="#4b4b47"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/January_day"
+                android:layout_marginLeft="10dp"
+                android:text="01.01-01.31"
+                android:textColor="#4b4b47"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/January_text_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45dp"
+                android:text="结余"
+                android:textColor="#4b4b47"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/January_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/January_text_money"
+                android:layout_marginRight="45dp"
+                android:paddingTop="5dp"
+                android:tag="money_arrow"
+                android:text="-500.0"
+                android:textColor="#4b4b47"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/service_arrow_down"
+                android:tag="service_arrow" />
+        </RelativeLayout>
+
+        <com.cwp.chart.FoldingLayout
+            android:id="@+id/January_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:tag="service_item" >
+
+            <LinearLayout
+                android:id="@+id/January_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#699bf9"
+                android:orientation="vertical"
+                android:tag="item_arrow" >
+
+                <ListView
+                    android:id="@+id/January_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#f3f3f3"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@drawable/selector"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:tag="list_arrow" />
+
+                <TextView
+                    android:id="@+id/January_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:tag="nodata_arrow"
+                    android:text="无记录"
+                    android:textColor="#fff0f0f0"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.cwp.chart.FoldingLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

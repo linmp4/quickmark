@@ -1,0 +1,132 @@
+package com.example.testpic;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
+
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.ImageView;
+
+public class BitmapCache {
+	final String TAG = getClass().getSimpleName();
+	
+	private HashMap<String, SoftReference<Bitmap>> imageCache = new HashMap<String, SoftReference<Bitmap>>();
+	
+	void put(String path, Bitmap bmp){
+		if(!TextUtils.isEmpty(path) && bmp != null){
+			imageCache.put(path, new SoftReference<Bitmap>(bmp));
+		}
+	}
+	
+	public void displayBmp(final ImageView iv, final String thumbPath, final String sourcePath, final ImageCallback callback){
+		if(TextUtils.isEmpty(thumbPath) && TextUtils.isEmpty(sourcePath)){
+			Log.e(TAG, "no paths pass in");
+			return;
+		}
+		
+		final String path;
+		final boolean isThumbPath;
+		if(!TextUtils.isEmpty(thumbPath)){
+			path = thumbPath;
+			isThumbPath = true;
+		}else if(!TextUtils.isEmpty(sourcePath)){
+			path = sourcePath;
+			isThumbPath = false;
+		}else{
+			iv.setImageBitmap(null);
+			return;
+		}
+			
+			if(imageCache.containsKey(path)){
+				SoftReference<Bitmap> reference = imageCache.get(path);
+				Bitmap bmp = reference.get();
+				if(bmp != null){
+					if(callback != null){
+						callback.imageLoad(iv, bmp, sourcePath);
+					}
+//					iv.setImageBitmap(bmp);
+					Log.d(TAG, "hit cache");
+					return;
+				}
+			}
+			iv.setImageBitmap(null);
+			
+			new Thread(){
+				public void run() {
+					final Bitmap thumb;
+					if(isThumbPath){
+						thumb = BitmapFactory.decodeFile(path);
+					}else{
+						BitmapFactory.Options opts = getResizeBmpOption(new File(path), 256, 256);
+						thumb = BitmapFactory.decodeFile(path, opts);
+					}
+					Log.d(TAG, isThumbPath+", decodeFile "+path+", "+thumb);
+					put(path, thumb);
+					
+					if(callback != null){
+						h.post(new Runnable() {
+							@Override
+							public void run() {
+								callback.imageLoad(iv, thumb, sourcePath);
+							}
+						});						
+					}
+				}
+			}.start();
+				
+	}
+	Handler h = new Handler();
+	
+	public BitmapFactory.Options getResizeBmpOption(File f, int requiredSizeW, int requiredSizeH){
+		try {
+			BitmapFactory.Options o = new BitmapFactory.Options();			
+			o.inJustDecodeBounds = true;
+			BitmapFactory.decodeStream(new FileInputStream(f), null, o);
+	
+			// Find the correct scale value. It should be the power of 2.
+			int scale = 1;
+				
+			if (requiredSizeW > 0 || requiredSizeH > 0) {
+				while (true) {
+					int scaleSizeW = o.outWidth / scale;
+					int scaleSizeH = o.outHeight / scale;
+					if ((!(requiredSizeW >0) || (requiredSizeW >0 && scaleSizeW <= requiredSizeW))
+							&& (!(requiredSizeH >0) || (requiredSizeH >0 && scaleSizeH <= requiredSizeH))) {
+						break;
+					}
+					scale += scale;
+				}
+			}
+	
+			Log.d(TAG, "after calculate, w: " + o.outWidth + ", h: " + o.outHeight
+					+ ", scale: " + scale + ", requiredSizeW: " + requiredSizeW
+					+ ", requiredSizeH: " + requiredSizeH);
+	
+			// decode with inSampleSize
+			BitmapFactory.Options o2 = new BitmapFactory.Options();
+			// o2.inDensity = 1;
+			// o2.inTargetDensity = o2.inDensity;
+			o2.inSampleSize = scale;
+			o2.inPurgeable = true;
+			o2.inPreferredConfig = Config.RGB_565;
+	//		o2.inPreferredConfig = Config.ARGB_8888;
+		
+//			Bitmap tmpBmp = BitmapFactory.decodeStream(new FileInputStream(f),
+//					null, o2);
+			return o2;
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public interface ImageCallback {
+		public void imageLoad(ImageView imageView, Bitmap bitmap, Object... params);
+	}
+}

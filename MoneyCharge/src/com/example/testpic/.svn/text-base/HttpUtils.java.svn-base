@@ -1,0 +1,82 @@
+package com.example.testpic;
+
+
+
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+
+public class HttpUtils {
+	
+	private static final int REQUEST_TIMEOUT = 4*1000;//设置请求超时时间
+	private static final int SO_TIME_OUT = 4*1000;//设置等待数据超时时间
+	/*
+	 * 传入ArrayList<NameValuePair>
+	 */
+	public static HttpEntity getEntity(String uri, List<NameValuePair> pair) throws IOException{
+		HttpEntity entity = null;
+		// 创建可以设置请求超时的参数
+		BasicHttpParams httpParams = new BasicHttpParams();
+		HttpConnectionParams.setConnectionTimeout(httpParams, REQUEST_TIMEOUT);
+		HttpConnectionParams.setSoTimeout(httpParams, SO_TIME_OUT);
+		// 创建客户端
+		HttpClient client = new DefaultHttpClient(httpParams);
+		// 创建请求
+		HttpUriRequest request = new HttpPost(uri);
+		// 如果请求参数集合不为空
+		if (pair != null && !pair.isEmpty()) {
+			// 创建请求实体对象
+			UrlEncodedFormEntity reqEntity = new UrlEncodedFormEntity(pair, "UTF-8");
+			// 为请求对象设置请求实体
+			((HttpPost) request).setEntity(reqEntity);
+		}
+		// 执行请求 获得响应
+		HttpResponse response = client.execute(request);
+		// 判断响应码
+		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			// 如果响应码为200，则获取响应实体
+			entity = response.getEntity();
+		}
+		return entity;
+	}
+	/*
+	 * 重写，传入MultipartEntity
+	 */
+	public static HttpEntity getEntity(String uri, MultipartEntity reqEntity) throws IOException{
+		HttpEntity entity = null;
+		// 创建可以设置请求超时的参数
+		BasicHttpParams httpParams = new BasicHttpParams();
+		HttpConnectionParams.setConnectionTimeout(httpParams, REQUEST_TIMEOUT);
+		HttpConnectionParams.setSoTimeout(httpParams, SO_TIME_OUT);
+		// 创建客户端
+		HttpClient client = new DefaultHttpClient(httpParams);
+		// 创建请求
+		HttpUriRequest request = new HttpPost(uri);
+		
+		// 如果请求参数集合不为空
+		if (reqEntity != null) {
+			// 为请求对象设置请求实体
+			((HttpPost) request).setEntity(reqEntity);
+		}
+		// 执行请求 获得响应
+		HttpResponse response = client.execute(request);
+		// 判断响应码
+		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			// 如果响应码为200，则获取响应实体
+			entity = response.getEntity();
+		}
+		return entity;
+	}
+}
