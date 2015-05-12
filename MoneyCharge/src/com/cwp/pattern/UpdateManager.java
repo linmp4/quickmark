@@ -182,7 +182,7 @@ public class UpdateManager extends Service {
 						Double serviceCode = Double.valueOf(mHashMap
 								.get("version"));
 						// °æ±¾ÅĞ¶Ï
-						if (Math.abs(serviceCode - versionCode) > 0.0000001) {
+						if ((serviceCode - versionCode) > 0) {
 							message.what = 2;
 						}
 					}
