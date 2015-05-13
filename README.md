@@ -1,14 +1,14 @@
 # quickmark 快速记
 
 快速记（个人记账安卓app），2015.4毕业设计<br><br>
+特色功能是：语音记账，地点记账，照片/图片记账<br><br>
 毕设题目为《基于Android平台的个人理财软件的设计与实现》<br>
 ###需要答辩ppt和毕业论文的请在下面链接中<br>下载:[基于Android平台的个人理财软件的设计与实现-源代码](http://download.csdn.net/detail/linmp4/8693147 "基于Android平台的个人理财软件的设计与实现-源代码")
 <br>
 
 >项目目录：<br>
->MoneyCharge(主目录)<br>
->SlidingMenu（库）<br>
->library_zhy_progressbar（库）
+>-MoneyCharge(主目录)<br>
+>-library_zhy_progressbar（库）
 
 <br>
 > [基于安卓的个人理财软件的设计与实现--项目心得](http://www.cnblogs.com/linmp4/p/4404347.html "基于安卓的个人理财软件的设计与实现--项目心得")<br><br>
