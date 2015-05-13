@@ -7,8 +7,17 @@
 <br>
 
 >项目目录：<br>
->-MoneyCharge(主目录)<br>
->-library_zhy_progressbar（库）
+>-MoneyCharge (主目录)<br>
+>--com.cwp.chart (饼图统计库)<br>
+>--com.cwp.cmoneycharge (主界面逻辑)<br>
+>--com.cwp.pattern (手势密码库)<br>
+>--com.example.testpic (图片记账库)<br>
+>--com.slidingmenu.lib (侧滑栏库)<br>
+>--com.slidingmenu.lib.app (侧滑栏库)<br>
+>--com.umeng.fb.example (友盟，用户反馈库)<br>
+>--com.zhy.view (环形进度条库)<br>
+>--cwp.moneycharge.dao (业务类)<br>
+>--cwp.moneycharge.model (数据库类)<br>
 
 <br>
 > [基于安卓的个人理财软件的设计与实现--项目心得](http://www.cnblogs.com/linmp4/p/4404347.html "基于安卓的个人理财软件的设计与实现--项目心得")<br><br>
