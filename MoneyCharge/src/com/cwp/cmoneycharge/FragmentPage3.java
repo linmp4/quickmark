@@ -54,8 +54,8 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 @SuppressLint("InflateParams")
-public class FragmentPage3 extends Fragment implements OnHeaderRefreshListener,
-		OnFooterRefreshListener {
+public class FragmentPage3 extends BaseFrament implements
+		OnHeaderRefreshListener, OnFooterRefreshListener {
 
 	TextView sum_pay, sum_income, sum_title, February_date;
 	ListView scrollview;
@@ -289,7 +289,6 @@ public class FragmentPage3 extends Fragment implements OnHeaderRefreshListener,
 		try {
 			date = format.parse(s);
 		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String[] weekDays = { "周日", "周一", "周二", "周三", "周四", "周五", "周六" };
@@ -477,6 +476,8 @@ public class FragmentPage3 extends Fragment implements OnHeaderRefreshListener,
 			if (groups.get(groupPosition).get("isnodata") == "true") {
 				lv2 = (LinearLayout) layoutInflater.inflate(R.layout.child,
 						null);
+				lv2.setOnClickListener(null);
+				elv.setDivider(null);
 			} else {
 				// 获取一级列表布局文件,设置相应元素属性
 				lv2 = (LinearLayout) layoutInflater.inflate(R.layout.group,
@@ -578,6 +579,17 @@ public class FragmentPage3 extends Fragment implements OnHeaderRefreshListener,
 
 	public static int getyear() {
 		return defaultYear;
+	}
+
+	@Override
+	public void filngtonext() {
+		System.out.println("filngtonext");
+		FragmentPage2.clickMoreBtn();
+	}
+
+	@Override
+	public void filngtonpre() {
+		FragmentPage2.clickMyfeedBtn();
 	}
 
 }

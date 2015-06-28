@@ -97,7 +97,9 @@
         <activity android:name="cwp.moneycharge.model.Tb_ptype" />
         <activity android:name="com.cwp.cmoneycharge.SettingActivity" />
         <activity android:name="com.cwp.cmoneycharge.PayChart" />
-        <activity android:name="com.umeng.fb.example.CustomActivity" />
+        <activity
+            android:name="com.umeng.fb.example.CustomActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.testpic.PublishedActivity"
             android:theme="@style/HalfTransparent" />

@@ -37,7 +37,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
-public class FragmentPage1 extends Fragment {
+public class FragmentPage1 extends BaseFrament {
 	int userid;
 	Button baddpay;
 	TextView income_amount;
@@ -182,8 +182,7 @@ public class FragmentPage1 extends Fragment {
 							itypeDAO.getOneImg(userid, tb_income.getType()));
 					map.put("no", tb_income.getNo() + "");
 					map.put("kind", "[" + tb_income.getKind() + "]");
-					map.put("money",
-							"￥ " + tb_income.getMoney2() + "元");
+					map.put("money", "￥ " + tb_income.getMoney2() + "元");
 					map.put("title",
 							itypeDAO.getOneName(userid, tb_income.getType()));
 					map.put("info", tb_income.getTime());
@@ -194,8 +193,7 @@ public class FragmentPage1 extends Fragment {
 							ptypeDAO.getOneImg(userid, tb_income.getType()));
 					map.put("no", tb_income.getNo() + "");
 					map.put("kind", "[" + tb_income.getKind() + "]");
-					map.put("money",
-							"￥ " + tb_income.getMoney2() + "元");
+					map.put("money", "￥ " + tb_income.getMoney2() + "元");
 					map.put("title",
 							ptypeDAO.getOneName(userid, tb_income.getType()));
 					map.put("info", tb_income.getTime());
@@ -205,5 +203,14 @@ public class FragmentPage1 extends Fragment {
 			adapter = new MyAdspter(getActivity(), list, false);
 			lvinfo.setAdapter(adapter);// 为ListView列表设置数据源
 		}
+	}
+
+	@Override
+	public void filngtonext() {
+		FragmentPage2.clickMyfeedBtn();
+	}
+
+	@Override
+	public void filngtonpre() {
 	}
 }

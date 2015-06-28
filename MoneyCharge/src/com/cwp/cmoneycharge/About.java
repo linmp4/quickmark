@@ -120,8 +120,6 @@ public class About extends Activity {
 		feedback.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				UpdateManager manager = new UpdateManager(About.this);
-				// 检查软件更新
 				Intent intent = new Intent(About.this, CustomActivity.class);
 				// intent.putExtra("cwp.md", "md");
 				startActivity(intent);

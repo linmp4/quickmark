@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.umeng.fb.example.CustomActivity;
+
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -38,6 +40,8 @@ import android.widget.Toast;
  * 
  */
 public class CrashHandler implements UncaughtExceptionHandler {
+	StringBuffer sb;
+	String result;
 	private static final String TAG = "CrashHandler";
 	private static final int MODE_WORLD_READABLE = 0x0001;
 	private Thread.UncaughtExceptionHandler mDefaultHandler;// 系统默认的UncaughtException处理类
@@ -108,7 +112,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			public void run() {
 				Looper.prepare();
 				Toast.makeText(mContext, "很抱歉,程序出现异常,即将退出", 0).show();
-				Toast.makeText(mContext, "请把错误日志用QQ发送到开发者", Toast.LENGTH_LONG)
+				Toast.makeText(mContext, "请把错误日志反馈给开发者", Toast.LENGTH_LONG)
 						.show();
 				Looper.loop();
 			}
@@ -119,12 +123,22 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		final File file = saveCrashInfo2File(ex);
 		TimerTask task = new TimerTask() {
 			public void run() {
-				sendAppCrashReport(mContext, file);
+				// sendAppCrashReport(mContext, file);
+				sendreport(mContext);
 			}
 		};
 		Timer timer = new Timer();
-		timer.schedule(task, 5000);
+		timer.schedule(task, 4000);
 		return true;
+	}
+
+	protected void sendreport(Context mContext) {
+		Intent intent = new Intent(mContext, CustomActivity.class);
+		intent.putExtra("cwp.md", result);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		mContext.startActivity(intent);
+		SysApplication.getInstance().exit();
 	}
 
 	public void sendAppCrashReport(Context mContext, File file) { // 通过系统分享发送文件
@@ -180,7 +194,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	}
 
 	private File saveCrashInfo2File(Throwable ex) {
-		StringBuffer sb = new StringBuffer();
+		sb = new StringBuffer();
 		for (Map.Entry<String, String> entry : info.entrySet()) {
 			String key = entry.getKey();
 			String value = entry.getValue();
@@ -196,7 +210,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			cause = cause.getCause();
 		}
 		pw.close();// 记得关闭
-		String result = writer.toString();
+		result = writer.toString();
 		sb.append(result);
 		// 保存文件
 		long timetamp = System.currentTimeMillis();

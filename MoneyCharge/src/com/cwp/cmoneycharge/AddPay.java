@@ -179,7 +179,6 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 		dialogShowUtil = new DialogShowUtil(this, this, VoiceSave, type, // 初始化dialog
 				VoiceDefault);
-
 		btn_loacte.setOnClickListener(this); // 定位
 
 		// 隐藏菜单

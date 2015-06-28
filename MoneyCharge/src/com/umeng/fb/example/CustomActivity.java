@@ -15,6 +15,7 @@ import com.umeng.fb.model.Reply;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -86,6 +87,15 @@ public class CustomActivity extends Activity {
 		Editor edit = sp.edit();
 
 		initView();
+
+		Intent intentr = getIntent();
+		Bundle bundle = intentr.getExtras();// 获取传入的数据，并使用Bundle记录
+		if (bundle != null) {
+			if (bundle.containsKey("cwp.md")) {
+				String error = (String) bundle.getString("cwp.md");// 获取Bundle中记录的信息
+				inputEdit.setText(error);
+			}
+		}
 		mAgent = new FeedbackAgent(this);
 		mComversation = new FeedbackAgent(this).getDefaultConversation();
 		if (!firstfb.equals(sp.getString("firstfb", ""))) {

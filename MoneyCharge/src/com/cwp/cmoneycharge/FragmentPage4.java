@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class FragmentPage4 extends Fragment {
+public class FragmentPage4 extends BaseFrament {
 
 	int userid;
 	Intent intentr;
@@ -201,5 +201,16 @@ public class FragmentPage4 extends Fragment {
 		dialog = customBuilder.create();// 创建对话框
 		dialog.show(); // 显示对话框
 
+	}
+
+	@Override
+	public void filngtonext() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void filngtonpre() {
+		FragmentPage2.clickHomeBtn();
 	}
 }

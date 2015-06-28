@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="fill_parent" >
 
     <LinearLayout
         android:id="@+id/fb_top"
@@ -96,6 +96,7 @@
                 android:layout_toStartOf="@id/fb_send_btn"
                 android:background="@drawable/fb_input_bg"
                 android:hint="意见反馈"
+                android:maxLines="5"
                 android:minHeight="33dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"

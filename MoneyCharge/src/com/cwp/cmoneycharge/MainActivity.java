@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTintManager.setStatusBarTintEnabled(true);
 		mTintManager.setStatusBarTintResource(R.color.statusbar_bg);
 
-		fragmentPage2 = new FragmentPage2();
+		fragmentPage2 = new FragmentPage2(this);
 		// 得到Fragment事务管理器
 		FragmentTransaction fragmentTransaction = this
 				.getSupportFragmentManager().beginTransaction();

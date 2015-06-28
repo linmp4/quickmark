@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -24,16 +25,22 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
 public class FragmentPage2 extends Fragment implements OnClickListener {
-	int userid;
-	private FragmentPage1 fragmentPage1;
+	static int userid;
+	private static FragmentPage1 fragmentPage1;
 	private FragmentPage2 fragmentPage2;
-	private FragmentPage3 fragmentPage3;
-	private FragmentPage4 fragmentPage4;
+	private static FragmentPage3 fragmentPage3;
+	private static FragmentPage4 fragmentPage4;
 	// 定义布局对象
-	private FrameLayout friendfeedFl, myfeedFl, homeFl, moreFl;
+	private static FrameLayout friendfeedFl;
+	private static FrameLayout myfeedFl;
+	private static FrameLayout homeFl;
+	private static FrameLayout moreFl;
 
 	// 定义图片组件对象
-	private ImageView friendfeedIv, myfeedIv, homeIv, moreIv;
+	private static ImageView friendfeedIv;
+	private static ImageView myfeedIv;
+	private static ImageView homeIv;
+	private static ImageView moreIv;
 
 	// 定义按钮图片组件
 	private ImageView toggleImageView, plusImageView;
@@ -48,6 +55,15 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 
 	int value = 0;
 	private LinearLayout pop_photoView;
+
+	static FragmentActivity act;
+
+	public FragmentPage2(FragmentActivity activity) {
+		act = activity;
+	}
+
+	public FragmentPage2() {
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +103,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	/**
 	 * 初始化组件
 	 */
-	private void initView() {
+	public void initView() {
 		value = MainActivity.getValueFM();
 		// 实例化布局对象
 		friendfeedFl = (FrameLayout) getActivity().findViewById(
@@ -233,12 +249,14 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	/**
 	 * 点击了“动态”按钮
 	 */
-	private void clickFriendfeedBtn() {
+	public static void clickFriendfeedBtn() {
 		// 实例化Fragment页面
 		fragmentPage1 = new FragmentPage1();
 		// 得到Fragment事务管理器
-		FragmentTransaction fragmentTransaction = getActivity()
-				.getSupportFragmentManager().beginTransaction();
+		FragmentTransaction fragmentTransaction;
+		fragmentTransaction = act.getSupportFragmentManager()
+				.beginTransaction();
+
 		// 替换当前的页面
 		fragmentTransaction.replace(R.id.frame_content, fragmentPage1);
 		// 事务管理提交
@@ -260,14 +278,14 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	/**
 	 * 点击了“与我相关”按钮
 	 */
-	private void clickMyfeedBtn() {
+	public static void clickMyfeedBtn() {
 
 		// Intent intentr = new Intent(getActivity(), PayData.class);
-		Intent intentr = new Intent(getActivity(), PayChart.class);
+		Intent intentr = new Intent(act, PayChart.class);
 		intentr.putExtra("cwp.id", userid);
 		intentr.putExtra("type", 0);
-		startActivity(intentr);
-		getActivity().overridePendingTransition(android.R.anim.fade_in,
+		act.startActivity(intentr);
+		act.overridePendingTransition(android.R.anim.fade_in,
 				android.R.anim.fade_out);
 
 	}
@@ -275,11 +293,11 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	/**
 	 * 点击了“我的空间”按钮
 	 */
-	private void clickHomeBtn() {
+	public static void clickHomeBtn() {
 		// 实例化Fragment页面
 		fragmentPage3 = new FragmentPage3();
 		// 得到Fragment事务管理器
-		FragmentTransaction fragmentTransaction = getActivity()
+		FragmentTransaction fragmentTransaction = act
 				.getSupportFragmentManager().beginTransaction();
 		// 替换当前的页面
 		fragmentTransaction.replace(R.id.frame_content, fragmentPage3);
@@ -302,11 +320,11 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	/**
 	 * 点击了“更多”按钮
 	 */
-	private void clickMoreBtn() {
+	public static void clickMoreBtn() {
 		// 实例化Fragment页面
 		fragmentPage4 = new FragmentPage4();
 		// 得到Fragment事务管理器
-		FragmentTransaction fragmentTransaction = getActivity()
+		FragmentTransaction fragmentTransaction = act
 				.getSupportFragmentManager().beginTransaction();
 		// 替换当前的页面
 		fragmentTransaction.replace(R.id.frame_content, fragmentPage4);
