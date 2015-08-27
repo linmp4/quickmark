@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <eat-comment />
+
+    <color name="black">#000</color>
+    <color name="blue">#2878ff</color>
+    <color name="card_default_background">#E2E2E2</color>
+    <color name="dark_blue">#2955C5</color>
+    <color name="dark_grey">#424242</color>
+    <color name="disabled_text_light">#E0E0E0</color>
+    <color name="dismiss_close">#FF5151</color>
+    <color name="dismiss_close_pressed">#B83120</color>
+    <color name="dismiss_overlay_bg">#80000000</color>
+    <color name="green">#32CD32</color>
+    <color name="grey">#777777</color>
+    <color name="light_grey">#cccccc</color>
+    <color name="orange">#FF6D3F</color>
+    <color name="primary_text_dark">@color/white</color>
+    <color name="primary_text_light">@color/dark_grey</color>
+    <color name="red">#FF5252</color>
+    <color name="secondary_text_light">#A2A2A2</color>
+    <color name="semitransparent_grey">#66777777</color>
+    <color name="white">#FFFFFF</color>
+
+    <declare-styleable name="BoxInsetLayout_Layout">
+        <attr name="layout_box">
+            <flag name="left" value="0x01" />
+            <flag name="top" value="0x02" />
+            <flag name="right" value="0x04" />
+            <flag name="bottom" value="0x08" />
+            <flag name="all" value="0x0F" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CircledImageView">
+        <attr name="android:src" />
+        <attr name="circle_color" format="color" />
+        <attr name="circle_radius" format="dimension" />
+        <attr name="circle_radius_pressed" format="dimension" />
+        <attr name="circle_border_width" format="dimension" />
+        <attr name="circle_border_color" format="color" />
+        <attr name="circle_padding" format="dimension" />
+        <attr name="shadow_width" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="DelayedConfirmationView">
+        <attr name="update_interval" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="DotsPageIndicator">
+        <attr name="dotSpacing" format="dimension" />
+        <attr name="dotRadius" format="dimension" />
+        <attr name="dotRadiusSelected" format="dimension" />
+        <attr name="dotColor" format="color" />
+        <attr name="dotColorSelected" format="color" />
+        <attr name="dotFadeWhenIdle" format="boolean" />
+        <attr name="dotFadeOutDelay" format="integer" />
+        <attr name="dotFadeOutDuration" format="integer" />
+        <attr name="dotFadeInDuration" format="integer" />
+        <attr name="dotShadowColor" format="color" />
+        <attr name="dotShadowRadius" format="dimension" />
+        <attr name="dotShadowDx" format="dimension" />
+        <attr name="dotShadowDy" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="WatchViewStub">
+        <attr name="rectLayout" format="reference" />
+        <attr name="roundLayout" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="WearableHeaderTextView">
+        <attr name="circular_layout_gravity">
+            <flag name="left" value="0x03" />
+            <flag name="top" value="0x30" />
+            <flag name="right" value="0x05" />
+            <flag name="bottom" value="0x50" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="center_horizontal" value="0x01" />
+            <flag name="center" value="0x11" />
+        </attr>
+        <attr name="circular_text_size" format="dimension" />
+    </declare-styleable>
+
+    <eat-comment />
+
+    <dimen name="card_content_padding_rect_top">4dp</dimen>
+    <dimen name="close_button_diameter">104dp</dimen>
+    <dimen name="dismiss_padding">16dp</dimen>
+
+    <declare-styleable name="ToggleButtonLayout">
+        <attr name="background_color" format="color" />
+        <attr name="button_color" format="color" />
+        <attr name="radius_x" format="dimension" />
+        <attr name="radius_y" format="dimension" />
+    </declare-styleable>
+
+</resources>
