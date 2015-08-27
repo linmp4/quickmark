@@ -133,6 +133,41 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/mark_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f5f5f5"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="备注："
+            android:textColor="#666872"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/mark_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="内容"
+            android:textColor="#666872"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

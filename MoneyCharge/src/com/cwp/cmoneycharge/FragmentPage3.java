@@ -238,6 +238,7 @@ public class FragmentPage3 extends BaseFrament implements
 											tb_income.getType()));
 							Data1.put("info", tb_income.getTime());
 							Data1.put("date", gofordate(tb_income.getTime()));
+							Data1.put("mark", tb_income.getMark());
 							child1.add(Data1);
 							sum += tb_income.getMoney();
 						} else { // 支出
@@ -254,6 +255,7 @@ public class FragmentPage3 extends BaseFrament implements
 											tb_income.getType()));
 							Data1.put("info", tb_income.getTime());
 							Data1.put("date", gofordate(tb_income.getTime()));
+							Data1.put("mark", tb_income.getMark());
 							child1.add(Data1);
 							sum -= tb_income.getMoney();
 						}
@@ -400,7 +402,6 @@ public class FragmentPage3 extends BaseFrament implements
 			// 获取二级列表对应的布局文件, 并将其各元素设置相应的属性
 			LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(
 					R.layout.list, null);
-
 			RelativeLayout search_img2 = (RelativeLayout) linearLayout
 					.findViewById(R.id.search_img2);
 			RelativeLayout titlebar = (RelativeLayout) linearLayout
@@ -411,6 +412,10 @@ public class FragmentPage3 extends BaseFrament implements
 					.findViewById(R.id.search_date);
 			TextView search_date2 = (TextView) linearLayout
 					.findViewById(R.id.search_date2);
+			LinearLayout mark_ll = (LinearLayout) linearLayout
+					.findViewById(R.id.mark_ll);
+			TextView mark_tv = (TextView) linearLayout
+					.findViewById(R.id.mark_tv);
 			TextView no = (TextView) linearLayout.findViewById(R.id.no);
 			TextView kind = (TextView) linearLayout.findViewById(R.id.kind);
 			TextView title = (TextView) linearLayout.findViewById(R.id.title);
@@ -439,6 +444,18 @@ public class FragmentPage3 extends BaseFrament implements
 			} else {
 				money.setTextColor(Color.parseColor("#5ea98d"));
 			}
+			if (((Map<String, String>) getChild(groupPosition, childPosition))
+					.get("mark") != null) {
+				if (!(((Map<String, String>) getChild(groupPosition,
+						childPosition)).get("mark").equals(""))
+						&& ((Map<String, String>) getChild(groupPosition,
+								childPosition)).get("mark") != "") { // 获取备注
+					mark_ll.setVisibility(View.VISIBLE);
+					mark_tv.setText(((Map<String, String>) getChild(
+							groupPosition, childPosition)).get("mark"));
+				}
+			}
+
 			return linearLayout;
 		}
 

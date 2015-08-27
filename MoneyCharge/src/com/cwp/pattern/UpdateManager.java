@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -141,7 +142,9 @@ public class UpdateManager extends Service {
 	 */
 	public void checkUpdate(String show) {
 		this.show = show;
-		if (isWifi(mContext)) {
+		SharedPreferences sp = mContext.getSharedPreferences("preferences",
+				MODE_WORLD_READABLE);
+		if (isWifi(mContext) || sp.getString("iswifi", "").equals("¿ª")) {
 			isUpdate();
 		} else {
 			if (show.equals("show")) {

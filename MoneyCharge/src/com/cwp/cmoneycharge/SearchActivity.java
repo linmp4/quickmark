@@ -661,6 +661,7 @@ public class SearchActivity extends Activity {
 					map.put("info", tb_income.getTime());
 					map.put("date",
 							FragmentPage3.gofordate(tb_income.getTime()));
+					map.put("mark", tb_income.getMark());
 					list.add(map);
 					income += tb_income.getMoney();
 					m++;// 标识加1
@@ -677,6 +678,7 @@ public class SearchActivity extends Activity {
 					map.put("info", tb_income.getTime());
 					map.put("date",
 							FragmentPage3.gofordate(tb_income.getTime()));
+					map.put("mark", tb_income.getMark());
 					list.add(map);
 					pay += tb_income.getMoney();
 					m++;// 标识加1

@@ -36,7 +36,7 @@ public class Tb_income {
 		this.handler = handler;// 为收入付款方赋值
 		this.mark = mark;// 为收入备注赋值
 		this.kind = kind;// 为收入备注赋值
-		this.photo = photo;// 为支出备注赋值
+		this.photo = photo;// 为图片备注赋值
 	}
 
 	public String getPhoto() {

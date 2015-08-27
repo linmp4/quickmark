@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="circle_border_normal_width">10dp</dimen>
+    <dimen name="circle_padding">5dp</dimen>
+    <dimen name="circle_radius">40dp</dimen>
+    <dimen name="circle_radius_pressed">40dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="spot_size">6dp</dimen>
+    <dimen name="title_margin">10dp</dimen>
+    <dimen name="progress_margin">24dp</dimen>
+    <dimen name="progress_width">250dp</dimen>
+    <dimen name="first">15dp</dimen>
+    <dimen name="second">10dp</dimen>
+    <dimen name="third">8dp</dimen>
+    <dimen name="width">10dp</dimen>
+    <dimen name="textSize">70dp</dimen>
+    <dimen name="metricSize">14dp</dimen>
+    <dimen name="metricPaddingY">25dp</dimen>
+
+</resources>

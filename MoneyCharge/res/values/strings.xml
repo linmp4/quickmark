@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <string name="app_name">快速记</string>
+    <string name="app_name">随口记</string>
     <string name="action_settings">Settings</string>
+    <string name="button_login">开始使用</string>
+    <string name="button_confirm_login">进入ing...</string>
 
     <style name="Dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@null</item>

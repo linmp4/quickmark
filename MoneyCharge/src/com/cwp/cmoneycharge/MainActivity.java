@@ -7,6 +7,13 @@ import com.cwp.cmoneycharge.AddPay;
 import com.cwp.cmoneycharge.R;
 import com.cwp.pattern.UnlockGesturePasswordActivity;
 import com.cwp.pattern.UpdateManager;
+import com.kobe.ubersplash.splash;
+import com.mobvoi.android.common.ConnectionResult;
+import com.mobvoi.android.common.api.MobvoiApiClient;
+import com.mobvoi.android.common.api.MobvoiApiClient.ConnectionCallbacks;
+import com.mobvoi.android.common.api.MobvoiApiClient.OnConnectionFailedListener;
+import com.mobvoi.android.wearable.Wearable;
+import com.umeng.analytics.MobclickAgent;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -36,7 +43,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
-public class MainActivity extends FragmentActivity implements OnClickListener {
+public class MainActivity extends FragmentActivity implements OnClickListener,
+		ConnectionCallbacks, OnConnectionFailedListener {
 	// 定义Fragment页面
 	private FragmentPage2 fragmentPage2;
 	SharedPreferences sp;
@@ -49,6 +57,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private FragmentPage3 fragmentPage3;
 	private String updatedate;
 	private Editor edit;
+	private MobvoiApiClient mMobvoiApiClient;
+	static boolean watchconnectflag = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +70,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		sp = this.getSharedPreferences("preferences", MODE_WORLD_READABLE);
 		edit = sp.edit();
 		// initdefault();// 初始化数据
+
+		splash();// 启动界面
+
+		forwatch();
 
 		SystemBarTintManager mTintManager;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -89,12 +103,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		int mDay = c.get(Calendar.DAY_OF_MONTH);// 获取天数
 		updatedate = mYear + "-" + mMonth + 1 + "-" + mDay;
 
-		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-		// .detectDiskReads().detectDiskWrites().detectNetwork()
-		// .penaltyLog().build());
-		// StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-		// .detectLeakedSqlLiteObjects().detectLeakedClosableObjects()
-		// .penaltyLog().penaltyDeath().build());
+	}
+
+	private void splash() {
+		if (sp.getString("splash", "").equals("")) {
+			edit.putString("splash", "ture");
+			edit.commit();
+			Intent intent = new Intent(MainActivity.this, splash.class);
+			startActivity(intent);
+		}
+
+	}
+
+	private void forwatch() {
+		mMobvoiApiClient = new MobvoiApiClient.Builder(this)
+				.addApi(Wearable.API).addConnectionCallbacks(this)
+				.addOnConnectionFailedListener(this).build();
 	}
 
 	private void initdefault() { // 初始化数据
@@ -132,8 +156,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		win.setAttributes(winParams);
 	}
 
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
 	protected void onResume() {
 		super.onResume();
+		mMobvoiApiClient.connect();
+
+		MobclickAgent.onResume(this);
+
 		CrashApplication myApplaction = (CrashApplication) getApplication();
 		if ((myApplaction.isLocked)
 				&& (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
@@ -148,5 +181,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			edit.putString("updatedate", updatedate); // 一天只检查一次
 			edit.commit();
 		}
+	}
+
+	@Override
+	public void onConnectionFailed(ConnectionResult arg0) {
+	}
+
+	@Override
+	public void onConnected(Bundle arg0) {
+		Intent intent = new Intent(MainActivity.this, PhoneService.class);
+		startService(intent);
+		watchconnectflag = true;
+	}
+
+	@Override
+	public void onConnectionSuspended(int arg0) {
 	};
 }

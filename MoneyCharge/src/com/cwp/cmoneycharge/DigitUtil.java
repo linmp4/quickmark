@@ -5,7 +5,11 @@ package com.cwp.cmoneycharge;
  *  www.agrilink.cn
  *  2012.11.30   
  */
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
+
+import com.cwp.chart.ConvertNum;
 
 public class DigitUtil {
 
@@ -13,13 +17,19 @@ public class DigitUtil {
 	 * 汉字中的数字字符
 	 */
 	private static final Character[] SCDigits = { '零', '一', '二', '两', '三', '四',
-			'五', '六', '七', '八', '九' };
+			'五', '六', '七', '八', '九'
+	// , '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒',
+	// '捌', '玖'
+	};
 
 	/**
 	 * 阿拉伯数字
 	 */
 	private static final Character[] araDigits = { '0', '1', '2', '2', '3',
-			'4', '5', '6', '7', '8', '9' };
+			'4', '5', '6', '7', '8', '9'
+	// , '0', '1', '2', '3', '4', '5', '6',
+	// '7', '8', '9'
+	};
 
 	/**
 	 * 阿拉伯数字
@@ -37,6 +47,9 @@ public class DigitUtil {
 		}
 		YWQBSHash.put('亿', 100000000);
 		YWQBSHash.put('万', 10000);
+		// YWQBSHash.put('仟', 1000);
+		// YWQBSHash.put('佰', 100);
+		// YWQBSHash.put('拾', 10);
 		YWQBSHash.put('千', 1000);
 		YWQBSHash.put('百', 100);
 		YWQBSHash.put('十', 10);
@@ -103,17 +116,17 @@ public class DigitUtil {
 				bool = false;
 				lastchar = '一'; // 恢复到默认值
 				continue;
-			} else if (ch[i] == '十') {
+			} else if (ch[i] == '十' || ch[i] == '拾') {
 				num = ywqbs(num, bool, 10, ch.length - i, ch[i], lastshow);
 				bool = true;
 				lastchar = '十';
 				lastshow = '十';
-			} else if (ch[i] == '千') {
+			} else if (ch[i] == '千' || ch[i] == '仟') {
 				num = ywqbs(num, bool, 1000, ch.length - i, ch[i], lastshow);
 				bool = true;
 				lastchar = '千';
 				lastshow = '千';
-			} else if (ch[i] == '百') {
+			} else if (ch[i] == '百' || ch[i] == '佰') {
 				num = ywqbs(num, bool, 100, ch.length - i, ch[i], lastshow);
 				bool = true;
 				lastchar = '百';
@@ -123,29 +136,216 @@ public class DigitUtil {
 				bool = true;
 				lastchar = '万';
 				lastshow = '万';
+			} else if (ch[i] == '亿') {
+				num = ywqbs(num, bool, 100000000, ch.length - i, ch[i],
+						lastshow);
+				bool = true;
+				lastchar = '亿';
+				lastshow = '亿';
 			}
 		}
 		ch = null;
 		return num;
 	}
 
-	// public static void main(String args[]) {
-	// String wordes[] = {
-	// "一千二百二十一万",
-	// "一千二百二十一",
-	// "一千零十",
-	// "一万零一百",
-	// "一千零十一",
-	// "一万零一百十一",
-	// "一千二百十九",
-	// "一千万",
-	// "五十五"
-	// };
-	// for(int i = 0; i < wordes.length; i++) {
-	// DigitUtil t = new DigitUtil();
-	// int num = t.parse(wordes[i]);
-	// System.out.println(wordes[i] + " " + num);
-	// }
-	// }
+	public static boolean isNumeric(String str) {
+		for (int i = str.length(); --i >= 0;) {
+			if (!Character.isDigit(str.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
 
+	// 没有考虑兆及更大单位的情况
+	public static long chn2digit(String chnStr) {
+		// init map
+		java.util.Map<String, Integer> unitMap = new java.util.HashMap<String, Integer>();
+		unitMap.put("十", 10);
+		unitMap.put("百", 100);
+		unitMap.put("千", 1000);
+		unitMap.put("万", 10000);
+		unitMap.put("亿", 100000000);
+
+		java.util.Map<String, Integer> numMap = new java.util.HashMap<String, Integer>();
+		numMap.put("零", 0);
+		numMap.put("一", 1);
+		numMap.put("二", 2);
+		numMap.put("三", 3);
+		numMap.put("四", 4);
+		numMap.put("五", 5);
+		numMap.put("六", 6);
+		numMap.put("七", 7);
+		numMap.put("八", 8);
+		numMap.put("九", 9);
+
+		// 队列
+		List<Long> queue = new ArrayList<Long>();
+		long tempNum = 0;
+		for (int i = 0; i < chnStr.length(); i++) {
+			char bit = chnStr.charAt(i);
+			// 数字
+			if (numMap.containsKey(bit + "")) {
+
+				tempNum = tempNum + numMap.get(bit + "");
+
+				// 一位数、末位数、亿或万的前一位进队列
+				if (chnStr.length() == 1
+						| i == chnStr.length() - 1
+						| (i + 1 < chnStr.length() && (chnStr.charAt(i + 1) == '亿' | chnStr
+								.charAt(i + 1) == '万'))) {
+					queue.add(tempNum);
+				}
+			}
+			// 单位
+			else if (unitMap.containsKey(bit + "")) {
+
+				// 遇到十 转换为一十、临时变量进队列
+				if (bit == '十') {
+					if (tempNum != 0) {
+						tempNum = tempNum * unitMap.get(bit + "");
+					} else {
+						tempNum = 1 * unitMap.get(bit + "");
+					}
+					queue.add(tempNum);
+					tempNum = 0;
+				}
+
+				// 遇到千、百 临时变量进队列
+				if (bit == '千' | bit == '百') {
+					if (tempNum != 0) {
+						tempNum = tempNum * unitMap.get(bit + "");
+					}
+					queue.add(tempNum);
+					tempNum = 0;
+				}
+
+				// 遇到亿、万 队列中各元素依次累加*单位值、清空队列、新结果值进队列
+				if (bit == '亿' | bit == '万') {
+					long tempSum = 0;
+					if (queue.size() != 0) {
+						for (int j = 0; j < queue.size(); j++) {
+							tempSum += queue.get(j);
+						}
+					} else {
+						tempSum = 1;
+					}
+					tempNum = tempSum * unitMap.get(bit + "");
+					queue.clear();// 清空队列
+					queue.add(tempNum);// 新结果值进队列
+					tempNum = 0;
+				}
+			}
+		}
+
+		// output
+		long sum = 0;
+		for (Long i : queue) {
+			sum += i;
+		}
+		return sum;
+	}
+
+	public String mixnumtostring(String str) {
+		str = str.replaceAll("廿", "二十");
+
+		str = str.replaceAll("两", "二");
+		str = str.replaceAll("玖", "九");
+		str = str.replaceAll("捌", "八");
+		str = str.replaceAll("柒", "七");
+		str = str.replaceAll("陆", "六");
+		str = str.replaceAll("伍", "五");
+		str = str.replaceAll("肆", "四");
+		str = str.replaceAll("叁", "三");
+		str = str.replaceAll("贰", "二");
+		str = str.replaceAll("壹", "一");
+
+		str = str.replaceAll("仟", "千");
+		str = str.replaceAll("佰", "百");
+		str = str.replaceAll("拾", "十");
+		str = str.replaceAll("亿", "|亿|");
+		str = str.replaceAll("万", "|万|");
+		str = str.replaceAll("千", "|千|");
+		str = str.replaceAll("百", "|百|");
+		str = str.replaceAll("十", "|十|");
+		String regex = "\\|";
+		String[] strs = str.split(regex);
+		ConvertNum cn = new ConvertNum();
+		for (int i = 0; i < strs.length; i++) {
+			if (isNumeric(strs[i])) {
+				if (!strs[i].equals("")) {
+					// strs[i] = d.test(Integer.parseInt(strs[i]));
+					strs[i] = cn.NumToChinese(Double.parseDouble(strs[i]));
+				}
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < strs.length; i++) {
+			sb.append(strs[i]);
+		}
+		long num = chn2digit(sb.toString());
+		return Long.toString(num);
+	}
+
+	static void sort(int arry[]) {
+		// int arry[] = { 1, 9, 3, 4, 5, 7, 2, 0, 6, 8 };
+		int temp = 0;
+		int i, j;
+		for (i = 1; i <= 10; i++)
+			for (j = 1; j < 11 - i; j++)
+				if (arry[j] < arry[j - 1]) {
+					temp = arry[j];
+					arry[j] = arry[j - 1];
+					arry[j - 1] = temp;
+				}
+
+		// for (i = 0; i < 10; i++)
+		// System.out.println(arry[i]);
+
+	}
+
+	// public static void main(String args[]) {
+	// Test d = new Test();
+	// String str = "30200万";
+	// str = str.replaceAll("两", "二");
+	//
+	// str = str.replaceAll("玖", "九");
+	// str = str.replaceAll("捌", "八");
+	// str = str.replaceAll("柒", "七");
+	// str = str.replaceAll("陆", "六");
+	// str = str.replaceAll("伍", "五");
+	// str = str.replaceAll("肆", "四");
+	// str = str.replaceAll("叁", "三");
+	// str = str.replaceAll("贰", "二");
+	// str = str.replaceAll("壹", "一");
+	//
+	// str = str.replaceAll("仟", "千");
+	// str = str.replaceAll("佰", "百");
+	// str = str.replaceAll("拾", "十");
+	// str = str.replaceAll("亿", "|亿|");
+	// str = str.replaceAll("万", "|万|");
+	// str = str.replaceAll("千", "|千|");
+	// str = str.replaceAll("百", "|百|");
+	// str = str.replaceAll("十", "|十|");
+	// System.out.println(str);
+	// String regex = "\\|";
+	// String[] strs = str.split(regex);
+	// ConvertNum cn = new ConvertNum();
+	// // System.out.println("asd " + cn.NumToChinese(300));
+	// for (int i = 0; i < strs.length; i++) {
+	// System.out.println(i + " " + strs[i]);
+	// if (isNumeric(strs[i])) {
+	// if (!strs[i].equals("")) {
+	// strs[i] = cn.NumToChinese(Double.parseDouble(strs[i]));
+	// }
+	// }
+	// }
+	// StringBuilder sb = new StringBuilder();
+	// for (int i = 0; i < strs.length; i++) {
+	// sb.append(strs[i]);
+	// }
+	// System.out.printf(sb.toString());
+	// long num = chn2digit(sb.toString());
+	// System.out.printf("" + num);
+	// }
 }

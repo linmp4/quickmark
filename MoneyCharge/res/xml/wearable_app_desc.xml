@@ -1,0 +1,6 @@
+<wearableApp package="com.cwp.cmoneycharge">
+        <versionCode>1</versionCode>
+        <versionName>1.0</versionName>
+        <rawPathResId>wearable_app</rawPathResId>
+        // 如果使用Android Studio自动打包, 该值为android_wear_micro_apk
+</wearableApp>

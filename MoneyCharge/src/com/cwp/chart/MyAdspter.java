@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -71,6 +72,8 @@ public class MyAdspter extends BaseAdapter {
 		public TextView search_date;
 		public TextView search_date2;
 		public RelativeLayout search_img2;
+		public TextView mark_tv;
+		public LinearLayout mark_ll;
 	}
 
 	@Override
@@ -88,6 +91,9 @@ public class MyAdspter extends BaseAdapter {
 			zujian.kind = (TextView) convertView.findViewById(R.id.kind);
 			zujian.money = (TextView) convertView.findViewById(R.id.money);
 			zujian.address = (TextView) convertView.findViewById(R.id.address);
+			zujian.mark_ll = (LinearLayout) convertView
+					.findViewById(R.id.mark_ll);
+			zujian.mark_tv = (TextView) convertView.findViewById(R.id.mark_tv);
 			zujian.search_date = (TextView) convertView
 					.findViewById(R.id.search_date);
 			zujian.search_date2 = (TextView) convertView
@@ -121,6 +127,13 @@ public class MyAdspter extends BaseAdapter {
 		} else {
 			zujian.money.setTextColor(Color.parseColor("#5ea98d"));
 		}
+		if (data.get(position).get("mark") != null) {
+			if (!data.get(position).get("mark").toString().equals("")) { // »ñÈ¡±¸×¢
+				zujian.mark_ll.setVisibility(View.VISIBLE);
+				zujian.mark_tv.setText(data.get(position).get("mark")
+						.toString());
+			}
+		}
 		if (time) {
 			zujian.titlebar.setVisibility(View.VISIBLE);
 			zujian.info.setText((String) data.get(position).get("info"));
@@ -136,5 +149,4 @@ public class MyAdspter extends BaseAdapter {
 		}
 		return convertView;
 	}
-
 }

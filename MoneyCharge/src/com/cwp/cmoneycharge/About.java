@@ -4,6 +4,7 @@ import com.cwp.chart.SystemBarTintManager;
 import com.cwp.pattern.GuideGesturePasswordActivity;
 import com.cwp.pattern.UnlockGesturePasswordActivity;
 import com.cwp.pattern.UpdateManager;
+import com.kobe.ubersplash.splash;
 import com.umeng.fb.example.CustomActivity;
 
 import cwp.moneycharge.dao.AccountDAO;
@@ -29,11 +30,13 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +57,9 @@ public class About extends Activity {
 	private TextView app_version;
 	private TextView updateapp;
 	private TextView feedback;
+	private TableRow iswifi;
+	private TextView iswifi_tv;
+	private TextView splash;
 
 	public About() {
 
@@ -76,10 +82,13 @@ public class About extends Activity {
 		mTintManager.setStatusBarTintEnabled(true);
 		mTintManager.setStatusBarTintResource(R.color.statusbar_bg);
 
+		splash = (TextView) findViewById(R.id.splash);
 		usernow = (TextView) findViewById(R.id.useracc);
 		countpay = (TextView) findViewById(R.id.countpay);
 		countuser = (TextView) findViewById(R.id.countuser);
 		countincome = (TextView) findViewById(R.id.countincome);
+		iswifi = (TableRow) findViewById(R.id.iswifi);
+		iswifi_tv = (TextView) findViewById(R.id.iswifi_tv);
 		description = (TableRow) findViewById(R.id.description);
 		sendlog = (TextView) findViewById(R.id.sendlog);
 		gesturepw = (TextView) findViewById(R.id.gesturepw);
@@ -126,6 +135,15 @@ public class About extends Activity {
 			}
 		});
 
+		splash.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(About.this, splash.class);
+				startActivity(intent);
+			}
+		});
+
+		
 		updateapp.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -168,12 +186,32 @@ public class About extends Activity {
 		countpay.setText(String.valueOf(payDAO.getCount(userid)));
 		countincome.setText(String.valueOf(incomeDAO.getCount(userid)));
 
+		if (sp.getString("iswifi", "").equals("关")
+				|| sp.getString("iswifi", "").equals("")) {
+			iswifi_tv.setText("关");
+		} else {
+			iswifi_tv.setText("开");
+		}
+		iswifi.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if (iswifi_tv.getText().equals("关")) {
+					iswifi_tv.setText("开");
+					edit.putString("iswifi", "开");
+					edit.commit();
+				} else {
+					iswifi_tv.setText("关");
+					edit.putString("iswifi", "关");
+					edit.commit();
+				}
+			}
+		});
+
 		gesturepw.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				CustomDialog.Builder customBuilder = new CustomDialog.Builder(
 						About.this);
-
 				customBuilder.setTitle("提示"); // 创建标题
 				customBuilder
 						.setMessage("是否开启/关闭手势密码？\n注意：关闭手势密码需输入原密码！")

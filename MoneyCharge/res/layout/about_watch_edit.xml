@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/about_w_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="界面二环条的比例，一圈默认代表1000元。共3圈。如此类推"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/about_w_dt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_w_tv"
+        android:hint="默认3000,请输入0~1亿以内的整数" />
+
+</RelativeLayout>

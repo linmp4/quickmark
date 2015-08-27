@@ -14,6 +14,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
+import com.baidu.voicerecognition.android.VoiceRecognitionConfig;
 import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
 import com.baidu.voicerecognition.android.ui.DialogRecognitionListener;
 import com.cwp.chart.SystemBarTintManager;
@@ -36,6 +37,7 @@ import cwp.moneycharge.model.Datapicker;
 import cwp.moneycharge.model.Tb_income;
 import cwp.moneycharge.model.Tb_pay;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -116,10 +118,21 @@ public class AddPay extends Activity implements AMapLocationListener,
 	private LocationManagerProxy mLocationManagerProxy;// 高德地图api
 	private Random mRandom = new Random();
 
-	String[] number = { "一", "二", "两", "三", "四", "五", "六", "七", "八", "九", "十" };
-	String[] money = { "元", "块", "钱" };
-	String[] money2 = { "十", "百", "千", "万", "亿" };
-	String[] voice_pay = { "买", "吃" };
+	static String[][] mztype = { { "早餐", "早上吃", "早上食", "今朝食" },
+			{ "晚餐", "晚上吃", "今晚食" }, { "午餐", "中午吃" }, { "夜宵", "宵夜" },
+			{ "生活用品", "沐浴露", "卫生巾", "洗头水" },
+			{ "打的", "出租车", "计程车", "嘀嘀打车", "优步" }, { "电子产品", "IPHONE", "三星" },
+			{ "意外财", "捡", "拣" }, { "租金", "租房" } };
+	static String[] number = { "1", "2", "3", "4", "5", "6", "7", "8", "9",
+			"0", "一", "二", "两", "三", "四", "五", "六", "七", "八", "九", "十", "百",
+			"千", "万", "亿", "拾", "佰", "仟", "壹", "贰", "叁", "肆", "伍", "陆", "柒",
+			"捌", "玖" };
+	static char[] number2 = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+			'一', '二', '两', '廿', '三', '四', '五', '六', '七', '八', '九', '十', '百',
+			'千', '万', '亿', '拾', '佰', '仟', '壹', '贰', '叁', '肆', '伍', '陆', '柒',
+			'捌', '玖' };
+	static String[] money = { "元", "块", "钱", "人民币", "rmb", "RMB", "蚊", "鸡" };
+	static String[] voice_pay = { "买", "吃", "花", "加油", "食", "洗" };
 	String[] voice_income = { "卖", "获" };
 
 	String[] VoiceSave = new String[6];
@@ -138,6 +151,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 	private FrameLayout bottom_empty;
 	private LinearLayout bottom_full;
 	private KeyboardUtil keyBoard;
+	private SharedPreferences sp;
 
 	public AddPay() {
 
@@ -176,6 +190,8 @@ public class AddPay extends Activity implements AMapLocationListener,
 		addphoto = (ImageView) findViewById(R.id.addphoto);
 		bottom_empty = (FrameLayout) findViewById(R.id.bottom_empty);
 		bottom_full = (LinearLayout) findViewById(R.id.bottom_full);
+
+		sp = this.getSharedPreferences("preferences", MODE_WORLD_READABLE);
 
 		dialogShowUtil = new DialogShowUtil(this, this, VoiceSave, type, // 初始化dialog
 				VoiceDefault);
@@ -419,6 +435,16 @@ public class AddPay extends Activity implements AMapLocationListener,
 				firstin = false;
 			}
 		}
+		if (bundle.containsKey("cwp.watch")) {// 进来调用手表语音
+			if (firstin) {
+				bottom_empty.setVisibility(View.GONE);
+				bottom_full.setVisibility(View.VISIBLE);
+				String text = bundle.getString("cwp.watch", "");
+				Recognition(text);
+				firstin = false;
+			}
+		}
+
 		if (bundle.containsKey("keyboard")) { // 进来显示键盘
 			if (keycount) {
 				InputMethodManager imm = (InputMethodManager) getSystemService(AddPay.this.INPUT_METHOD_SERVICE); // 显示键盘
@@ -680,8 +706,11 @@ public class AddPay extends Activity implements AMapLocationListener,
 		mDialog.setDialogRecognitionListener(mRecognitionListener);
 		mDialog.getParams().putInt(BaiduASRDigitalDialog.PARAM_PROP, // 百度识别类别
 				Config.CURRENT_PROP);
-		mDialog.getParams().putString(BaiduASRDigitalDialog.PARAM_LANGUAGE, // 百度识别语言
-				Config.getCurrentLanguage());
+		mDialog.getParams().putString(
+				BaiduASRDigitalDialog.PARAM_LANGUAGE, // 百度识别语言
+				sp.getString("planguage",
+						VoiceRecognitionConfig.LANGUAGE_CHINESE));
+
 		mDialog.getParams().putBoolean(
 				// 百度识别音效相关
 				BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE,
@@ -781,9 +810,9 @@ public class AddPay extends Activity implements AMapLocationListener,
 	 * @param VoiceSave[5] "语音识别"类别的值
 	 */
 	private void Recognition(String t) {
-		int mfirst = 100, mend = 0, temp = 0;
+		int mfirst = t.length() + 1, mend = t.length() + 1, temp = 0;
 		Boolean ismoney = false, intype = false, outtype = false;
-		Boolean voice_ptype = false, voice_intype = false;
+		Boolean voice_ptype = false, voice_intype = false, isunit = false;
 		String w = "", strmoney = "", inname = "1", outname = "2";
 		spdatalist = ptypeDAO.getPtypeName(userid);
 		spdatalist2 = itypeDAO.getItypeName(userid);
@@ -796,16 +825,6 @@ public class AddPay extends Activity implements AMapLocationListener,
 				VoiceSave[0] = Integer.toString(i); // VoiceSave[0]为收入类别的值
 			}
 		}
-		for (int i = 0; i < voice_pay.length; i++) { // 判断是否包含支出的动词
-			if (t.indexOf(voice_pay[i]) > -1) {
-				voice_ptype = true;
-			}
-		}
-		for (int i = 0; i < voice_income.length; i++) { // 判断是否包含支出的动词
-			if (t.indexOf(voice_income[i]) > -1) {
-				voice_intype = true;
-			}
-		}
 		for (int i = 0; i < spdatalist2.size(); i++) { // 判断是否包含收入
 			if (t.indexOf(spdatalist2.get(i).toString()) > -1) {
 				type = "income";
@@ -814,57 +833,124 @@ public class AddPay extends Activity implements AMapLocationListener,
 				VoiceSave[4] = Integer.toString(i); // VoiceSave[4]为支出类别的值
 			}
 		}
-		for (int i = 0; i < number.length; i++) { // 判断是否包含金额，获得开头
-			if (t.indexOf(number[i]) > -1) {
-				temp = t.indexOf(number[i]);
-				if (temp < mfirst) {
-					mfirst = temp;
+		if (!(intype || outtype)) {
+			for (int i = 0; i < mztype.length; i++) {
+				for (int j = 0; j < mztype[i].length; j++) {
+					if (t.indexOf(mztype[i][j].toString()) > -1) {
+						// System.out.println("包含 " + mztype[i][j]);
+						for (int k = 0; k < spdatalist.size(); k++) { // 判断是否包含支出
+							if (mztype[i][0].indexOf(spdatalist.get(k)
+									.toString()) > -1) {
+								type = "pay";
+								intype = true;
+								inname = spdatalist.get(k).toString();
+								VoiceSave[0] = Integer.toString(k); // VoiceSave[0]为收入类别的值
+							}
+						}
+						for (int l = 0; l < spdatalist2.size(); l++) { // 判断是否包含收入
+							if (mztype[i][0].indexOf(spdatalist2.get(l)
+									.toString()) > -1) {
+								type = "income";
+								outtype = true;
+								outname = spdatalist2.get(l).toString();
+								VoiceSave[4] = Integer.toString(l); // VoiceSave[4]为支出类别的值
+							}
+						}
+					}
 				}
 			}
 		}
-		for (int i = 0; i < money.length; i++) { // 判断是否包含金额，获得结尾
+		for (int i = 0; i < voice_pay.length; i++) { // 判断是否包含支出的动词
+			if (t.indexOf(voice_pay[i]) > -1) {
+				voice_ptype = true;
+				type = "pay";
+			}
+		}
+		for (int i = 0; i < voice_income.length; i++) { // 判断是否包含支出的动词
+			if (t.indexOf(voice_income[i]) > -1) {
+				voice_intype = true;
+				type = "income";
+			}
+		}
+		for (int i = 0; i < money.length; i++) { // 判断是否包含单位，获得结尾
 			if (t.indexOf(money[i]) > -1) {
 				temp = t.indexOf(money[i]);
-				if (temp > -1 && temp >= mend) {
+				isunit = true;
+				if (temp < mend) {
 					mend = temp;
 				}
 			}
 		}
-		for (int i = 0; i < money2.length; i++) { // 判断是否包含金额，获得结尾
-			if (t.indexOf(money2[i]) > -1) {
-				temp = t.indexOf(money2[i]);
-				if (temp > -1 && temp >= mend) {
-					mend = temp;
+		if (!isunit) { // 无结尾
+			int tmend = -2;
+			for (int i = 0; i < number.length; i++) { // 判断是否包含阿拉伯数字开头，获得结尾
+				if (t.lastIndexOf(number[i]) > -1) {
+					temp = t.lastIndexOf(number[i]);
+					if (temp > tmend) {
+						tmend = temp;
+					}
 				}
-				mend = mend + 1;
 			}
+			mend = tmend + 1;
+			for (int i = 0; i < number.length; i++) { // 判断是否包含阿拉伯数字金额，获得开头
+				if (t.indexOf(number[i]) > -1) {
+					temp = t.indexOf(number[i]);
+					if ((temp < mfirst) && (temp <= mend)) {
+						mfirst = temp;
+					}
+				}
+			}
+		} else {// 有结尾
+			char[] c = t.toCharArray();
+			int flag = t.length() + 1;
+			boolean b = true;
+			for (int i = mend; i > 0; i--) { // 判断是否包含阿拉伯数字金额，获得开头
+				if (b) {
+					for (int j = 0; j < number.length; j++) {
+						if (c[i] == number2[j]) {
+							flag = i;
+							boolean a = true;
+							for (int k = 0; k < number.length; k++) {
+								if (c[i - 1] == number2[k]) {
+									flag = i - 1;
+									a = false;
+								}
+							}
+							if (a) {
+								b = false;
+							}
+						}
+					}
+				} else {
+					break;
+				}
+			}
+			mfirst = flag;
 		}
-		if (!(mfirst == 100 || mend == 0)) { // 转换为阿拉伯数字
+		// System.out.println("strmoney2 " + strmoney + " mfirst " + mfirst
+		// + " mend " + mend + " isunit " + isunit);
+		if (!(mfirst == (t.length() + 1) || mend == (t.length() + 1) || mend == -1)) { // 转换为阿拉伯数字
 			ismoney = true;
 			strmoney = t.substring(mfirst, mend);
 			// 判断语句是否包含非数字
+			// System.out.println("strmoney " + strmoney + " mfirst " + mfirst
+			// + " mend " + mend);
 			char[] chs = strmoney.toCharArray();
 			List<String> num = Arrays.asList(number);
 			List<String> mon = Arrays.asList(money);
-			List<String> mon2 = Arrays.asList(money2);
 			for (int l = 0; l < chs.length; l++)
 				if (!num.contains(String.valueOf(chs[l])))
 					if (!mon.contains(String.valueOf(chs[l])))
-						if (!mon2.contains(String.valueOf(chs[l])))
-							ismoney = false;
+						ismoney = false;
 			if (ismoney) {
 				DigitUtil Util = new DigitUtil();
-				VoiceSave[1] = Integer.toString(Util.parse(strmoney)); // 调用工具类处理汉字的金额
+				VoiceSave[1] = Util.mixnumtostring(strmoney); // 调用工具类处理汉字的金额
 			}
 		}
 		if (intype && outtype) { // 如果同时含有收入/支出的类别
 			if (outname.equals(inname)) {
 				if (ismoney) {
-					if (voice_intype) {
-						type = "income";
-						dialogShowUtil.dialogShow("rotatebottom", "OK", t, w);
-					} else if (voice_ptype) {
-						type = "pay";
+					if (voice_intype || voice_ptype) {
 						dialogShowUtil.dialogShow("rotatebottom", "OK", t, w);
 					} else {
 						VoiceSave[3] = outname; // VoiceSave[3]为重复类别的值，仅用于显示提醒
@@ -894,9 +980,14 @@ public class AddPay extends Activity implements AMapLocationListener,
 						VoiceSave[3] = "语音识别";
 					}
 				}
-				w = "**提示：\n你的话中没有包含<（默认）类别>（" + listToString(spdatalist, '，')
-						+ "）\n\n\n将会记录为<语音识别>类别，是否依然记录？\n";
-				dialogShowUtil.dialogShow("shake", "notype", t, w);
+				if (voice_intype || voice_ptype) {
+					VoiceSave[0] = VoiceSave[5];
+					dialogShowUtil.dialogShow("rotatebottom", "OK", t, w);
+				} else {
+					w = "将会记录为<语音识别>类别\n**提示：没有包含<（默认）类别>（"
+							+ listToString(spdatalist, '，') + "）\n\n\n";
+					dialogShowUtil.dialogShow("shake", "notype", t, w);
+				}
 			} else {
 				dialogShowUtil.dialogShow("rotatebottom", "OK", t, w);
 			}

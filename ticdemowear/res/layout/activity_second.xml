@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+ 
+    <com.db.circularmeterdemo.CircularCounter
+        xmlns:meter="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/meter"
+        android:layout_width="242dp"
+        android:layout_height="242dp"
+        android:layout_centerInParent="true"
+        meter:metricSize="18sp"
+        meter:metricText="加载中..."
+        meter:range="60"
+        meter:textColor="#ffffff"
+        meter:textSize="40sp" />
+
+</RelativeLayout>

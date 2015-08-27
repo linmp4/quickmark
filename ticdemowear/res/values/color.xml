@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="deep_purple_300">#9575CD</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="deep_purple_800">#4527A0</color>
+    <color name="spots_dialog_color">@android:color/holo_blue_dark</color>
+
+</resources>

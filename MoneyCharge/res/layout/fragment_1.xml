@@ -90,9 +90,9 @@
             android:id="@+id/lvtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="2015-4-10"
+            android:layout_marginLeft="10dp"
+            android:text="今天的收支："
             android:textColor="#602a08"
             android:textSize="20dp" />
     </RelativeLayout>

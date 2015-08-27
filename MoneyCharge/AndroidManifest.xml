@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cwp.cmoneycharge"
-    android:versionCode="2"
-    android:versionName="1.08" >
+    android:versionCode="6"
+    android:versionName="1.19" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -33,6 +33,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
+            android:name="com.mobvoi.ticwear.app"
+            android:resource="@xml/wearable_app_desc" />
+        <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="40fd2c7bc96ff0fc9eccdbabc2b96984" />
         <meta-data
@@ -57,7 +60,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.kobe.ubersplash.splash" />
         <activity android:name="com.cwp.cmoneycharge.About" />
+        <activity android:name="com.cwp.cmoneycharge.AboutWatch" />
         <activity android:name="com.cwp.cmoneycharge.Account" />
         <activity android:name="com.cwp.cmoneycharge.AddIncome" />
         <activity android:name="com.cwp.cmoneycharge.AddNote" />
@@ -129,6 +134,9 @@
             android:name="com.example.testpic.PhotoActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+
+        <service android:name="com.cwp.cmoneycharge.PhoneService" >
+        </service>
     </application>
 
 </manifest>

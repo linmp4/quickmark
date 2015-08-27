@@ -72,6 +72,9 @@ public class FragmentPage1 extends BaseFrament {
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+
+		SysApplication.getInstance().addActivity(getActivity()); // 在销毁队列中添加this
+
 		lvinfo = (ListView) getView().findViewById(R.id.lvoutaccountinfo);// 获取布局文件中的ListView组件
 		baddpay = (Button) getView().findViewById(R.id.add_expense_quickly_btn);// 添加按钮
 		income_amount = (TextView) getView().findViewById(R.id.income_amount);
@@ -150,8 +153,8 @@ public class FragmentPage1 extends BaseFrament {
 		defaultYear = c.get(Calendar.YEAR);// 获取年份
 		defaultMonth = c.get(Calendar.MONTH) + 1;// 获取月份
 		defaultDay = c.get(Calendar.DAY_OF_MONTH);// 获取天数
-		lvtime.setText("今天是" + defaultYear + "年" + defaultMonth + "月"
-				+ defaultDay + "日");
+		// lvtime.setText("今天是" + defaultYear + "年" + defaultMonth + "月"
+		// + defaultDay + "日");
 		if (defaultMonth < 10) {
 			dmonth = "0" + Integer.toString(defaultMonth);
 		} else {
@@ -186,6 +189,7 @@ public class FragmentPage1 extends BaseFrament {
 					map.put("title",
 							itypeDAO.getOneName(userid, tb_income.getType()));
 					map.put("info", tb_income.getTime());
+					map.put("mark", tb_income.getMark());
 					list.add(map);
 				} else { // 支出
 					Map<String, Object> map = new HashMap<String, Object>();
@@ -197,6 +201,7 @@ public class FragmentPage1 extends BaseFrament {
 					map.put("title",
 							ptypeDAO.getOneName(userid, tb_income.getType()));
 					map.put("info", tb_income.getTime());
+					map.put("mark", tb_income.getMark());
 					list.add(map);
 				}
 			}

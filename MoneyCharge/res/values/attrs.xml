@@ -2,24 +2,24 @@
 <resources>
 
     <declare-styleable name="Switch">
-        <attr name="textOn" format="string" />
+      <!--   <attr name="textOn" format="string" />
         <attr name="textOff" format="string" />
         <attr name="thumbTextPadding" format="dimension" />
         <attr name="switchTextAppearance" format="reference" />
         <attr name="switchMinWidth" format="dimension" />
         <attr name="switchPadding" format="dimension" />
         <attr name="thumb" format="reference" />
-        <attr name="track" format="reference" />
+        <attr name="track" format="reference" /> -->
     </declare-styleable>
     <declare-styleable name="TextAppearance">
-        <attr name="android:textColor" />
+      <!--   <attr name="android:textColor" />
         <attr name="android:textSize" />
         <attr name="android:textStyle" />
         <attr name="android:typeface" />
         <attr name="android:textColorHighlight" />
         <attr name="android:textColorHint" />
         <attr name="android:textColorLink" />
-        <attr name="textAllCaps" format="boolean" />
+        <attr name="textAllCaps" format="boolean" /> -->
     </declare-styleable>
     <declare-styleable name="PullToRefresh">
 

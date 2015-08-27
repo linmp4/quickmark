@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageButton
+            android:id="@+id/test_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mic_bg_selector" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/main_scroll_switch_account" />
+
+        <TextView
+            android:id="@+id/speak_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/test_button"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal"
+            android:text="早餐吃了10块钱..." />
+
+        <com.example.sportsdialogdemo.ProgressLayout
+            android:id="@+id/endloadingbar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/test_button"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/progress_margin"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#e0000000"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/rl2_iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/yes_normal" />
+
+        <TextView
+            android:id="@+id/rl2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl2_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="保存成功"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl3"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#e0000000"
+        android:visibility="gone" >
+
+        <ScrollView
+            android:id="@+id/rl3_sv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/black" >
+
+            <TextView
+                android:id="@+id/rl3_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:text="保存内容"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/rl3_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="保存成功"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <android.support.wearable.view.DelayedConfirmationView
+            android:id="@+id/delayed_confirmation2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="50dp"
+            app:circle_border_color="@color/white"
+            app:circle_border_width="@dimen/circle_border_normal_width"
+            app:circle_color="@color/red"
+            app:circle_padding="@dimen/circle_padding"
+            app:circle_radius="@dimen/circle_radius"
+            app:circle_radius_pressed="@dimen/circle_radius_pressed" >
+
+            <TextView
+                android:id="@+id/rl3_tv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </android.support.wearable.view.DelayedConfirmationView>
+
+        <android.support.wearable.view.DelayedConfirmationView
+            android:id="@+id/delayed_confirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="50dp"
+            app:circle_border_color="@color/white"
+            app:circle_border_width="@dimen/circle_border_normal_width"
+            app:circle_color="@color/green"
+            app:circle_padding="@dimen/circle_padding"
+            app:circle_radius="@dimen/circle_radius"
+            app:circle_radius_pressed="@dimen/circle_radius_pressed" >
+
+            <TextView
+                android:id="@+id/rl3_tv_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="重录"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </android.support.wearable.view.DelayedConfirmationView>
+    </RelativeLayout>
+
+</FrameLayout>

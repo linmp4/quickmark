@@ -4,6 +4,8 @@ import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -39,6 +41,10 @@ public class SettingActivity extends Activity implements
 
 	int userid, type;
 
+	private SharedPreferences sp;
+
+	private Editor edit;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,6 +54,10 @@ public class SettingActivity extends Activity implements
 		Intent intentr = getIntent();
 		userid = intentr.getIntExtra("cwp.id", 100000001);
 		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
+
+		sp = this.getSharedPreferences("preferences", MODE_WORLD_READABLE);
+		edit = sp.edit();
+
 		startSoundCheckBox = (CheckBox) findViewById(R.id.cb_play_start_sound);
 		startSoundCheckBox.setChecked(Config.PLAY_START_SOUND);
 		startSoundCheckBox.setOnCheckedChangeListener(this);
@@ -77,13 +87,22 @@ public class SettingActivity extends Activity implements
 			}
 		});
 		languageSpinner = (Spinner) this.findViewById(R.id.languages);
-		languageSpinner.setSelection(Config.getCurrentLanguageIndex());
+
+		languageSpinner.setSelection(Integer.parseInt(sp.getString(
+				"planguageindex", "0")));
+
 		languageSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				Config.setCurrentLanguageIndex(position);
+				int index = Config.getCurrentLanguageIndex();
+				String lan = Config.getCurrentLanguage();
+
+				edit.putString("planguage", lan);
+				edit.putString("planguageindex", String.valueOf(index));
+				edit.commit();
 			}
 
 			@Override

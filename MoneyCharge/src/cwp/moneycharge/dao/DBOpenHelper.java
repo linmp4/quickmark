@@ -37,7 +37,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"1","工资"});
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"2","还款"});
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"3","股票"});
-		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"4","还款"});
+		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"4","意外财"});
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"5","基金"});
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"6","分红"});
 		db.execSQL("insert into tb_itype(_id,no,typename) values(?,?,?)",new String[]{String.valueOf(100000001),"7","利息"});
