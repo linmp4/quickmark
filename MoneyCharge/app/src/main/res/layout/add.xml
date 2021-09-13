@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/common_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/top"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="@color/fragment2"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/actionbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fragment2"
+            android:paddingBottom="5dip"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dip" >
+
+            <ImageView
+                android:id="@+id/example_left3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/left_back" />
+
+            <ImageView
+                android:id="@+id/example_right3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                style="@style/TextView.Middle.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="记一笔"
+                android:textColor="@android:color/black"
+                android:textSize="20.0sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ly"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/trans_type_tab_rg"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/payout_tab_rb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="34.0dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/payout_tab_btn_radio"
+                    android:button="@null"
+                    android:gravity="left"
+                    android:paddingLeft="22dp"
+                    android:paddingTop="8dp"
+                    android:text="支出"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/income_tab_rb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="34.0dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/income_tab_btn_radio"
+                    android:button="@null"
+                    android:gravity="right"
+                    android:paddingRight="22dp"
+                    android:paddingTop="8dp"
+                    android:text="收入"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </RadioGroup>
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/txtMoney"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="5.0dip"
+                            android:background="@drawable/add_trans_paper_top_row"
+                            android:editable="false"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="right|center"
+                            android:hint="输入金额"
+                            android:paddingRight="30.0dip"
+                            android:paddingTop="5.0dp"
+                            android:textColor="@color/cost_text"
+                            android:textColorHint="@color/black"
+                            android:textSize="35.0dp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <FrameLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="50.0dip"
+                            android:background="@drawable/add_trans_paper_middle_row_normal" >
+
+                            <TextView
+                                android:id="@+id/tvType"
+                                style="@style/form_row_label"
+                                android:text="类别" />
+
+                            <Spinner
+                                android:id="@+id/spType"
+                                style="@style/form_row_input_top"
+                                android:layout_toRightOf="@id/tvType"
+                                android:dropDownWidth="150dp"
+                                android:paddingRight="20.0dip"
+                                android:prompt="@string/spn_prompt_category" />
+
+                            <ImageView style="@style/form_row_go_detail" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/corporation_fl"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/add_trans_paper_middle_row_normal"
+                            android:visibility="gone" >
+
+                            <TextView
+                                style="@style/form_row_label"
+                                android:text="付款人" />
+
+                            <EditText
+                                android:id="@+id/txtInhandler"
+                                style="@style/form_row_input_middle"
+                                android:layout_gravity="center_vertical"
+                                android:singleLine="false"
+                                android:hint="请输入..." />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/bottom_empty"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/add_trans_income_bottom_row_bg" >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/bottom_more" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:id="@+id/bottom_full"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone" >
+
+                            <FrameLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/add_trans_paper_middle_row_normal" >
+
+                                <EditText
+                                    android:id="@+id/txtTime"
+                                    style="@style/form_row_input_middle"
+                                    android:editable="false"
+                                    android:prompt="@string/spn_prompt_account"
+                                    android:textColorHint="@color/white" />
+
+                                <TextView
+                                    style="@style/form_row_label"
+                                    android:text="时间" />
+
+                                <ImageView style="@style/form_row_go_detail" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/address_fl"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/add_trans_paper_middle_row_normal" >
+
+                                <TextView
+                                    android:id="@+id/tvAddress"
+                                    style="@style/form_row_label"
+                                    android:text="地点" />
+
+                                <EditText
+                                    android:id="@+id/txtAddress"
+                                    style="@style/form_row_input_middle"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="40dp"
+                                    android:singleLine="false"
+                                    android:hint="请输入..." />
+
+                                <ImageView
+                                    android:id="@+id/btn_loacte"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/locate_btn" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="90dp"
+                                android:background="@drawable/add_trans_income_memo_row_bg" >
+
+                                <TextView
+                                    android:id="@+id/tvMark"
+                                    style="@style/form_row_label"
+                                    android:text="备注" />
+
+                                <EditText
+                                    android:id="@+id/txtMark"
+                                    style="@style/form_row_input_middle"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="60dp"
+                                    android:singleLine="false"
+                                    android:hint="请输入..." />
+
+                                <RelativeLayout
+                                    android:layout_width="74dp"
+                                    android:layout_height="74dp"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/expense_camera_btn_normal_2" >
+
+                                    <ImageView
+                                        android:id="@+id/addphoto"
+                                        android:layout_width="68dp"
+                                        android:layout_height="68dp"
+                                        android:layout_centerInParent="true"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/addphoto_btn" />
+                                </RelativeLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/empty_fl"
+                                style="@style/form_row_input_middle"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/addmode"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true" >
+
+                            <Button
+                                android:id="@+id/btnVoice"
+                                style="@style/common_toolbar_btn_for_addexpense"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="130.0dip"
+                                android:text="语音识别"
+                                android:textColor="@color/black" />
+
+                            <Button
+                                android:id="@+id/btnSave"
+                                style="@style/common_toolbar_btn_for_addexpense"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10.0dip"
+                                android:text="保存"
+                                android:textColor="@color/black" />
+
+                            <Button
+                                android:id="@+id/btnCancel"
+                                style="@style/common_toolbar_btn_for_addexpense"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="10.0dip"
+                                android:text="取消"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboard_view"
+            style="@style/Widget.KeyboardView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyBackground="@drawable/keyboard_key"
+            android:keyPreviewLayout="@layout/preview_layout"
+            android:keyTextColor="#353535"
+            android:keyTextSize="21.5sp"
+            android:labelTextSize="21.5sp"
+            android:popupLayout="@layout/preview_layout"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</FrameLayout>

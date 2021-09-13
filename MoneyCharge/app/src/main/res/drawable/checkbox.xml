@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- checked -->
+    <item android:drawable="@drawable/chinapay_help_bank_list_icon1" android:state_checked="true"/>
+    <!-- default -->
+    <item android:drawable="@drawable/chinapay_help_bank_list_icon2" android:state_checked="false"/>
+
+</selector>

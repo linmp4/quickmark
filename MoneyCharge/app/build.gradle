@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.cwp.cmoneycharge"
+        minSdkVersion 15
+        targetSdkVersion 18
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:22.2.1'
+    compile files('libs/achartengine-1.1.0.jar')
+    compile files('libs/Android_Location_V1.3.2.jar')
+    compile files('libs/androidpiechart.jar')
+    compile files('libs/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2.jar')
+    compile files('libs/com.umeng.fb.v5.0.0.jar')
+    compile files('libs/com.umeng.message.lib1.4.1.jar')
+    compile files('libs/galaxy.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile files('libs/VoiceRecognition-1.6.2.jar')
+}
