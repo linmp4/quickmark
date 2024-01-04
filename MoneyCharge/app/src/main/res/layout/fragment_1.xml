@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical"
+        android:paddingTop="20dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/main_top_month_report_bg"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp" >
+
+            <LinearLayout
+                android:id="@+id/month_expense_ly"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/main_money_label_hdpi"
+                        android:text="收入总额:"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/income_amount"
+                        style="@style/main_money_hdpi"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/main_money_label_hdpi"
+                        android:text="支出总额:"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/expense_amount"
+                        style="@style/main_money_hdpi"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_expense_quickly_btn"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/main_add_expense_quickly"
+            android:text="记一笔"
+            android:textColor="#ffffff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffca39"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/lvtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="2015-4-10"
+            android:textColor="#602a08"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_weight="0.95"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lvoutaccountinfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@drawable/selector"
+            android:scrollbarAlwaysDrawVerticalTrack="true" />
+
+        <RelativeLayout
+            android:id="@+id/lvnodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/search_img_nodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/image_cry_man" />
+
+            <TextView
+                android:id="@+id/lv_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_img_nodata"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="今天还没有收入/消费"
+                android:textColor="#b3b4b7"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lv_text1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="赶紧买买买！"
+                android:textColor="#b3b4b7"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

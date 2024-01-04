@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="red">#ffff0000</color>
+    <color name="statusbar_bg">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="fragment2">#fabd31</color>
+    <color name="black_25">#40000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_25">#40ffffff</color>
+    <color name="white_50">#80ffffff</color>
+    <color name="grey">#fff0f0f0</color>
+    <color name="color_hei_8">#00000000</color>
+
+    <drawable name="trans">@color/color_hei_8</drawable>
+
+    <color name="gesture_background">#ff303237</color>
+    <color name="month_day_number">#ff6d5630</color>
+    <color name="month_today_number">#ffffffff</color>
+    <color name="month_other_month">#ff595959</color>
+    <color name="month_other_month_day_number">#ffb4a283</color>
+    <color name="month_other_month_name">#ff84868c</color>
+    <color name="month_other_month_banner">#ffd3d2d7</color>
+    <color name="month_day_grid_line_color">#ffc0a884</color>
+    <color name="month_week_banner">#ffd3d2d7</color>
+    <color name="transparent">#00000000</color>
+    <color name="calendar_daybox_all_pay">#ff1ba400</color>
+    <color name="calendar_daybox_has_expired">#ffa40017</color>
+    <color name="calendar_daybox_other">#ff919191</color>
+    <color name="calendar_lv_item_text_color">#ffd1b890</color>
+    <color name="budget_balance_tips_for_addexpense_normal">#ff63594a</color>
+    <color name="budget_balance_tips_for_addexpense_red">#ffff0000</color>
+    <color name="transaction_payout_amount">#ff54b45d</color>
+    <color name="transaction_income_amount">#ffff0000</color>
+    <color name="buy_sync_service_seleted_color">#ffff9900</color>
+    <color name="RoyalBlue">#4169E1</color>
+    <color name="LightSteelBlue">#B0C4DE</color>
+    <color name="text_color">#FFFFFF</color>
+    <color name="divider_color">#11000000</color>
+    <color name="msg_color">#FFFFFFFF</color>
+    <color name="dialog_bg">#ffe74c3c</color>
+    <color name="btn_press_color">#FFa5281b</color>
+    <color name="btn_unpress_color">#FFc0392b</color>
+    <color name="black_deep">#FF000000</color>
+    <color name="half_transparent">#80000000</color>
+    <color name="dialog_buttom_bg">#ffe7e7e7</color>
+    <color name="listview_divider">#E0E0E0</color>
+    <color name="ffd0d0d0">#ffd0d0d0</color>
+    <color name="ff778799">#ff778799</color>
+    <color name="ff515c68">#ff515c68</color>
+    <color name="ff79351b">#ff79351b</color>
+    <color name="c_33000000">#33000000</color>
+    <color name="c_7fffffff">#7fffffff</color>
+    <color name="c_666666">#666666</color>
+    <color name="c_808080">#808080</color>
+    <color name="ffffffff">#FFFFFFFF</color>
+    <color name="ff666666">#ff666666</color>
+    <color name="umeng_fb_lightblue">#FF0FB0A8</color>
+    <color name="umeng_fb_gray">#FFD8D8D8</color>
+    <color name="umeng_fb_line">#DCDCDC</color>
+    <color name="umeng_fb_secondary_text_light">#8A000000</color>
+    <color name="umeng_fb_white">#FFFFFF</color>
+
+</resources>

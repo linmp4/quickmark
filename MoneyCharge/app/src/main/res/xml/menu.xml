@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="支出图表" >
+        <Preference
+            android:key="mpaychart"
+            android:summary="按月份显示支出图表"
+            android:title="分类支出（按月）" />
+        <Preference
+            android:key="dpaychart"
+            android:summary="自定义范围显示支出图表"
+            android:title="分类支出（自定义）" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="收入图表" >
+        <Preference
+            android:key="mincomechart"
+            android:summary="按月份显示收入图表"
+            android:title="分类收入（按月）" />
+        <Preference
+            android:key="dincomehart"
+            android:summary="自定义范围显示收入图表"
+            android:title="分类收入（自定义）" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
